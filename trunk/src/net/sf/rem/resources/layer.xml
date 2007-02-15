@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="j2ee">
+        <folder name="webtier">
+            <folder name="framework">
+                <file name="net-sf-rem-project-ZKFrameworkProvider.instance"/>
+            </folder>
+        </folder>
+    </folder>
+    
+    <folder name="org-netbeans-api-project-libraries">
+        <folder name="Libraries">
+            <file name="ZK.xml" url="ZK.xml"/>
+        </folder>
+    </folder>
+    
+    <folder name="net-sf-rem">
+        <file name="index.zul" url="index.zul"/>
+    </folder>
+</filesystem>

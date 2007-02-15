@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE library PUBLIC "-//NetBeans//DTD Library Declaration 1.0//EN" "http://www.netbeans.org/dtds/library-declaration-1_0.dtd">
+<library version="1.0">
+    <name>ZK</name>
+    <type>j2se</type>
+    <localizing-bundle>net.sf.rem.resources.Bundle</localizing-bundle>
+    <volume>
+        <type>classpath</type>
+        <resource>jar:nbinst://net.sf.rem/libs/bsh.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/commons-el.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/commons-fileupload.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/commons-io.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/dojoz.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/fckez.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/gmapsz.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/jcommon.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/jfreechart.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/zcommon.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/zhtml.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/zk.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/zkplus.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/zul.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/zweb.jar!/</resource>
+    </volume>
+    <volume>
+        <type>src</type>
+        
+    </volume>
+    <volume>
+        <type>javadoc</type>            
+        
+    </volume>
+</library>
