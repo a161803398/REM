@@ -28,6 +28,11 @@
     </volume>
     <volume>
         <type>javadoc</type>
-        
+        <resource>jar:nbinst://net.sf.rem/docs/zcommon.zip!/</resource>
+        <resource>jar:nbinst://net.sf.rem/docs/zhtml.zip!/</resource>
+        <resource>jar:nbinst://net.sf.rem/docs/zk.zip!/</resource>
+        <resource>jar:nbinst://net.sf.rem/docs/zkplus.zip!/</resource>
+        <resource>jar:nbinst://net.sf.rem/docs/zul.zip!/</resource>
+        <resource>jar:nbinst://net.sf.rem/docs/zweb.zip!/</resource>
     </volume>
 </library>
