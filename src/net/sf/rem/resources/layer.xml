@@ -125,6 +125,32 @@
         </folder>
     </folder>
     
+    <folder name="Editors">
+        <folder name="text">
+            <folder name="xml">
+                <folder name="HyperlinkProviders">
+                    <file name="ZulHyperlinkProvider.instance">
+                        <attr name="instanceClass" stringvalue="net.sf.editor.ZulHyperlinkProvider"/>
+                        <attr name="instanceOf" stringvalue="org.netbeans.lib.editor.hyperlink.spi.HyperlinkProvider"/>
+                    </file>
+                </folder>
+            </folder>
+            <!--
+            <folder name="x-struts+xml">
+                <folder name="Popup"> 
+                    <file name="org-netbeans-modules-web-struts-editor-StrutsPopupAction.instance">
+                    </file>
+                    <attr name="org-netbeans-modules-web-struts-editor-StrutsPopupAction.instance/Separator0.instance" boolvalue="true"/>
+                    <file name="Separator0.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="Separator0.instance/org-netbeans-modules-xml-text-syntax-XMLViewActions.instance" boolvalue="true"/>
+                </folder>
+            </folder>
+            -->
+        </folder>
+    </folder>
+    
     <folder name="Navigator">
         <folder name="Panels">
             <folder name="text">
