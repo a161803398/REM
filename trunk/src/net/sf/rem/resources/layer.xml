@@ -148,6 +148,12 @@
                 </folder>
             </folder>
             
+            <!-- use editor features for java file -->
+            <folder name="x-zs">
+                <file name="EditorKit.instance">
+                    <attr name="instanceClass" stringvalue="org.netbeans.modules.editor.java.JavaKit"/>
+                </file>
+            </folder>
         </folder>
     </folder>
     

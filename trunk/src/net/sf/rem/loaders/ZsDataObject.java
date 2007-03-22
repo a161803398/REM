@@ -1,6 +1,7 @@
 package net.sf.rem.loaders;
 
 import java.io.IOException;
+import org.netbeans.modules.java.JavaDataObject;
 import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataObjectExistsException;
 import org.openide.loaders.MultiDataObject;
