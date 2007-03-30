@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package net.sf.editor;
+package net.sf.rem.editor;
 
 import java.awt.event.ActionEvent;
 import javax.swing.JMenu;
@@ -34,7 +34,7 @@ public class ZulPopupAction extends SystemAction implements Presenter.Popup{
 
     public String getName() {
         return NbBundle.getMessage(ZulPopupAction.class, 
-                "net-sf-editor-ZulPopupAction.instance"); // NOI18N
+                "net-sf-rem-editor-ZulPopupAction.instance"); // NOI18N
     }
 
     public HelpCtx getHelpCtx() {

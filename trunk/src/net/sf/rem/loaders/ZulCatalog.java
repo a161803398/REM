@@ -27,27 +27,27 @@ import org.xml.sax.SAXException;
 public class ZulCatalog implements CatalogReader, CatalogDescriptor, org.xml.sax.EntityResolver{
     
     public static final String JAVAEE_NS = "http://java.sun.com/xml/ns/javaee";  // NOI18N
-    private static final String ZUL_2_0_XSD="zul.xsd"; // NOI18N
-    private static final String ZUL_2_0=JAVAEE_NS+"/"+ZUL_2_0_XSD; // NOI18N
-    public static final String ZUL_ID_2_0="SCHEMA:"+ZUL_2_0; // NOI18N
-    private static final String URL_ZUL_2_0="nbres:/net/sf/rem/resources/zul.xsd"; // NOI18N
-    private static final String URL_ZUL_2_0_DTD = "nbres:/net/sf/rem/resources/zul.dtd"; // NOI18N
+    private static final String ZUL_2_3_0_XSD="zul.xsd"; // NOI18N
+    private static final String ZUL_2_3_0=JAVAEE_NS+"/"+ZUL_2_3_0_XSD; // NOI18N
+    public static final String ZUL_ID_2_3_0="SCHEMA:"+ZUL_2_3_0; // NOI18N
+    private static final String URL_ZUL_2_3_0="nbres:/net/sf/rem/resources/zul.xsd"; // NOI18N
+    private static final String URL_ZUL_2_3_0_DTD = "nbres:/net/sf/rem/resources/zul.dtd"; // NOI18N
     
     /** Creates a new instance of ZulCatalog */
     public ZulCatalog() {
     }
 
     public InputSource resolveEntity(String publicId, String systemId) throws SAXException, IOException {
-        if(ZUL_ID_2_0.equals(publicId)){
-            return new org.xml.sax.InputSource(URL_ZUL_2_0_DTD);
+        if(ZUL_ID_2_3_0.equals(publicId)){
+            return new org.xml.sax.InputSource(URL_ZUL_2_3_0_DTD);
             //return new org.xml.sax.InputSource("nbres:/net/sf/rem/resources/zul.dtd");
         }
         return null;
     }
 
     public Iterator getPublicIDs() {
-        java.util.List list = new java.util.ArrayList();
-        list.add(ZUL_ID_2_0);
+        java.util.List<String> list = new java.util.ArrayList<String>();
+        list.add(ZUL_ID_2_3_0);
         return list.listIterator();
     }
 
@@ -55,7 +55,7 @@ public class ZulCatalog implements CatalogReader, CatalogDescriptor, org.xml.sax
     }
 
     public String getSystemID(String string) {
-        return URL_ZUL_2_0_DTD;
+        return URL_ZUL_2_3_0_DTD;
     }
 
     public String resolveURI(String string) {
@@ -81,7 +81,7 @@ public class ZulCatalog implements CatalogReader, CatalogDescriptor, org.xml.sax
     }
 
     public String getShortDescription() {
-        return "XML Catalog for ZUL 2.0";
+        return "XML Catalog for ZUL 2.3.0";
     }
 
     public void addPropertyChangeListener(PropertyChangeListener propertyChangeListener) {
