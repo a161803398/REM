@@ -40,7 +40,7 @@ public class ZulGrammarQueryManager extends org.netbeans.modules.xml.api.model.G
             EntityResolver resolver = catalog.getEntityResolver();
             if (resolver != null) {
                 try {
-                    String schema = ZulCatalog.ZUL_ID_2_0;
+                    String schema = ZulCatalog.ZUL_ID_2_3_0;
                     InputSource inputSource = resolver.resolveEntity(schema, null);
                     if (inputSource!=null) {
                         // parse DTD file

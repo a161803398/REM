@@ -130,7 +130,7 @@
             <folder name="xml">
                 <folder name="HyperlinkProviders">
                     <file name="ZulHyperlinkProvider.instance">
-                        <attr name="instanceClass" stringvalue="net.sf.editor.ZulHyperlinkProvider"/>
+                        <attr name="instanceClass" stringvalue="net.sf.rem.editor.ZulHyperlinkProvider"/>
                         <attr name="instanceOf" stringvalue="org.netbeans.lib.editor.hyperlink.spi.HyperlinkProvider"/>
                     </file>
                 </folder>
@@ -138,9 +138,9 @@
             
             <folder name="x-zul+xml">
                 <folder name="Popup"> 
-                    <file name="net-sf-editor-ZulPopupAction.instance">
+                    <file name="net-sf-rem-editor-ZulPopupAction.instance">
                     </file>
-                    <attr name="net-sf-editor-ZulPopupAction.instance/Separator0.instance" boolvalue="true"/>
+                    <attr name="net-sf-rem-editor-ZulPopupAction.instance/Separator0.instance" boolvalue="true"/>
                     <file name="Separator0.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
                     </file>

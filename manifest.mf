@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 OpenIDE-Module: net.sf.rem
 OpenIDE-Module-Layer: net/sf/rem/resources/layer.xml
 OpenIDE-Module-Localizing-Bundle: net/sf/rem/resources/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Specification-Version: 1.1.0
 
 Name: net/sf/rem/loaders/ZsDataLoader.class
 OpenIDE-Module-Class: Loader

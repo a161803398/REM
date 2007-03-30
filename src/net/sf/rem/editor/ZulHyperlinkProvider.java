@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package net.sf.editor;
+package net.sf.rem.editor;
 
 import java.text.MessageFormat;
 import java.util.Hashtable;

@@ -13,7 +13,7 @@
 -->
 
 <!-- area -->
-<!ELEMENT area (attribute | custom-attributes)*>
+<!ELEMENT area (attribute | custom-attributes | variables)*>
 <!ATTLIST area 
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -37,11 +37,12 @@
         forEach CDATA #IMPLIED
         forEachBegin CDATA #IMPLIED
         forEachEnd CDATA #IMPLIED
-        name CDATA #IMPLIED
+        name CDATA #REQUIRED
+        trim CDATA #IMPLIED
 >
         
 <!-- audio -->
-<!ELEMENT audio  (attribute | custom-attributes)*>
+<!ELEMENT audio  (attribute | custom-attributes | variables)*>
 <!ATTLIST audio
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -77,7 +78,7 @@
 >
 
 <!-- bandbox -->
-<!ELEMENT bandbox ((attribute | custom-attributes)*,(bandpopup,(attribute | custom-attributes)*)?)>
+<!ELEMENT bandbox ((attribute | custom-attributes | variables)*,(bandpopup,(attribute | custom-attributes | variables)*)?)>
 <!ATTLIST bandbox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -110,6 +111,7 @@
         maxlength CDATA #IMPLIED
         cols CDATA #IMPLIED
         constraint CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
         autodrop CDATA #IMPLIED
         buttonVisible CDATA #IMPLIED
         image CDATA #IMPLIED
@@ -125,7 +127,7 @@
 >
 
 <!-- bandpopup -->
-<!ELEMENT bandpopup (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT bandpopup (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging |  popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST bandpopup 
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -155,7 +157,7 @@
 >
 
 <!-- box -->
-<!ELEMENT box (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
+<!ELEMENT box (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart |  checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging |  popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
 <!ATTLIST box 
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -184,12 +186,15 @@
         tooltip CDATA #IMPLIED
         orient (horizontal|vertical) #IMPLIED
         spacing CDATA #IMPLIED
+        widths CDATA #IMPLIED
+        heights CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
         onClientInfo CDATA #IMPLIED
+        valign (top|baseline|middle|bottom) #IMPLIED
 >
 
 <!-- button -->
-<!ELEMENT button (attribute | custom-attributes)*>
+<!ELEMENT button (attribute | custom-attributes | variables)*>
 <!ATTLIST button
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -233,7 +238,7 @@
 >
 
 <!-- calendar -->
-<!ELEMENT calendar (attribute | custom-attributes)*>
+<!ELEMENT calendar (attribute | custom-attributes | variables)*>
 <!ATTLIST calendar 
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -269,7 +274,7 @@
 >
 
 <!-- caption -->
-<!ELEMENT caption (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT caption (#PCDATA | attribute | custom-attributes | varaibles | audio | bandbox | box | button | calendar | chart |  checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST caption
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -304,7 +309,7 @@
 >
 
 <!-- chart -->
-<!ELEMENT chart (attribute | custom-attributes)*>
+<!ELEMENT chart (attribute | custom-attributes | variables)*>
 <!ATTLIST chart
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -343,6 +348,7 @@
         threeD CDATA #IMPLIED
         showLegend CDATA #IMPLIED
         showTooltiptext CDATA #IMPLIED
+        paneAlpha CDATA #IMPLIED
         paneColor CDATA #IMPLIED
         fgAlpha CDATA #IMPLIED
         bgAlpha CDATA #IMPLIED
@@ -358,7 +364,7 @@
 >
  
 <!-- checkbox -->
-<!ELEMENT checkbox (attribute | custom-attributes)*>
+<!ELEMENT checkbox (attribute | custom-attributes | variables)*>
 <!ATTLIST checkbox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -400,7 +406,7 @@
 >
 
 <!-- column -->
-<!ELEMENT column (attribute | custom-attributes)*>
+<!ELEMENT column (attribute | custom-attributes | variables)*>
 <!ATTLIST column
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -430,7 +436,7 @@
         label CDATA #IMPLIED
         image CDATA #IMPLIED
         align (left|right|center) #IMPLIED
-        valign (top|middle|bottom) #IMPLIED
+        valign (top|baseline|middle|bottom) #IMPLIED
         sortDirection (natural|ascending|descending) #IMPLIED
         sortAscending CDATA #IMPLIED
         sortDescending CDATA #IMPLIED
@@ -441,7 +447,7 @@
 >
 
 <!-- columns -->
-<!ELEMENT columns (attribute | custom-attributes | column)*>
+<!ELEMENT columns (attribute | custom-attributes | variables | column)*>
 <!ATTLIST columns
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -472,7 +478,7 @@
 >
 
 <!-- combobox -->
-<!ELEMENT combobox (attribute | custom-attributes | comboitem)*>
+<!ELEMENT combobox (attribute | custom-attributes | variables | comboitem)*>
 <!ATTLIST combobox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -505,6 +511,7 @@
         maxlength CDATA #IMPLIED
         cols CDATA #IMPLIED
         constraint CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
         autodrop CDATA #IMPLIED
         buttonVisible CDATA #IMPLIED
         value CDATA #IMPLIED
@@ -519,7 +526,7 @@
 >
 
 <!-- comboitem -->
-<!ELEMENT comboitem (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT comboitem (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart |  checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST comboitem
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -555,7 +562,7 @@
 <!ELEMENT custom-attributes EMPTY>
 
 <!-- datebox -->
-<!ELEMENT datebox (attribute | custom-attributes)*>
+<!ELEMENT datebox (attribute | custom-attributes | variables)*>
 <!ATTLIST datebox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -588,6 +595,7 @@
         maxlength CDATA #IMPLIED
         cols CDATA #IMPLIED
         constraint CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
         format CDATA #IMPLIED
         value CDATA #IMPLIED
         lenient CDATA #IMPLIED
@@ -602,7 +610,7 @@
 >
 
 <!-- decimalbox -->
-<!ELEMENT decimalbox (attribute | custom-attributes)*>
+<!ELEMENT decimalbox (attribute | custom-attributes | variables)*>
 <!ATTLIST decimalbox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -635,6 +643,7 @@
         maxlength CDATA #IMPLIED
         cols CDATA #IMPLIED
         constraint CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
         format CDATA #IMPLIED
         value CDATA #IMPLIED
         scale CDATA #IMPLIED
@@ -647,7 +656,7 @@
 >
 
 <!-- div -->
-<!ELEMENT div (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT div (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST div
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -682,8 +691,8 @@
         onClientInfo CDATA #IMPLIED
 >
 
-<!-- doubledox -->
-<!ELEMENT doublebox (attribute | custom-attributes)*>
+<!-- doublebox -->
+<!ELEMENT doublebox (attribute | custom-attributes | variables)*>
 <!ATTLIST doublebox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -716,6 +725,7 @@
         maxlength CDATA #IMPLIED
         cols CDATA #IMPLIED
         constraint CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
         format CDATA #IMPLIED
         value CDATA #IMPLIED
         onChange CDATA #IMPLIED
@@ -726,8 +736,75 @@
         onClientInfo CDATA #IMPLIED
 >
 
+<!-- foot -->
+<!ELEMENT foot (attribute | custom-attributes | variables | footer)*>
+<!ATTLIST foot
+        if CDATA #IMPLIED
+        unless CDATA #IMPLIED
+        forEach CDATA #IMPLIED
+        forEachBegin CDATA #IMPLIED
+        forEachEnd CDATA #IMPLIED
+        id ID #IMPLIED
+        visible CDATA #IMPLIED
+        mold CDATA #IMPLIED
+        use CDATA #IMPLIED
+        width CDATA #IMPLIED
+        height CDATA #IMPLIED
+        sclass CDATA #IMPLIED
+        style CDATA #IMPLIED
+        left CDATA #IMPLIED
+        top CDATA #IMPLIED
+        draggable CDATA #IMPLIED
+        droppable CDATA #IMPLIED
+        tooltiptext CDATA #IMPLIED
+        zindex CDATA #IMPLIED
+        onCreate CDATA #IMPLIED
+        onDrop CDATA #IMPLIED
+        action CDATA #IMPLIED
+        context CDATA #IMPLIED
+        popup CDATA #IMPLIED
+        tooltip CDATA #IMPLIED
+>
+
+<!-- footer -->
+<!ELEMENT footer (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ATTLIST footer 
+        if CDATA #IMPLIED
+        unless CDATA #IMPLIED
+        forEach CDATA #IMPLIED
+        forEachBegin CDATA #IMPLIED
+        forEachEnd CDATA #IMPLIED
+        id ID #IMPLIED
+        visible CDATA #IMPLIED
+        mold CDATA #IMPLIED
+        use CDATA #IMPLIED
+        width CDATA #IMPLIED
+        height CDATA #IMPLIED
+        sclass CDATA #IMPLIED
+        style CDATA #IMPLIED
+        left CDATA #IMPLIED
+        top CDATA #IMPLIED
+        draggable CDATA #IMPLIED
+        droppable CDATA #IMPLIED
+        tooltiptext CDATA #IMPLIED
+        zindex CDATA #IMPLIED
+        onCreate CDATA #IMPLIED
+        onDrop CDATA #IMPLIED
+        action CDATA #IMPLIED
+        context CDATA #IMPLIED
+        popup CDATA #IMPLIED
+        tooltip CDATA #IMPLIED
+        label CDATA #IMPLIED
+        image CDATA #IMPLIED
+        span CDATA #IMPLIED
+        onClick CDATA #IMPLIED
+        onRightClick CDATA #IMPLIED
+        onDoubleClick CDATA #IMPLIED
+>
+
+
 <!-- grid -->
-<!ELEMENT grid ((attribute | custom-attributes)*,((columns,(attribute | custom-attributes)*,(rows,(attribute | custom-attributes)*)?) | (rows,(attribute | custom-attributes)*,(columns,(attribute | custom-attributes)*)?))?)>
+<!ELEMENT grid (attribute | custom-attributes | variables | columns | rows | foot)*>
 <!ATTLIST grid
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -757,6 +834,8 @@
         align (left|right|center) #IMPLIED
         pageSize CDATA #IMPLIED
         paginal CDATA #IMPLIED
+        model CDATA #IMPLIED
+        rowRenderer CDATA #IMPLIED
         onPaging CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
         onClientInfo CDATA #IMPLIED
@@ -766,7 +845,7 @@
 <!--
   The children elements of groupbox here may not be equivalent to that in zul.xsd
 -->
-<!ELEMENT groupbox (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | caption)*>
+<!ELEMENT groupbox (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | caption)*>
 <!ATTLIST groupbox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -795,6 +874,7 @@
         tooltip CDATA #IMPLIED
         open CDATA #IMPLIED
         closable CDATA #IMPLIED
+        contentStyle CDATA #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
         onDoubleClick CDATA #IMPLIED
@@ -804,7 +884,7 @@
 >
 
 <!-- hbox -->
-<!ELEMENT hbox (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
+<!ELEMENT hbox (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | chart | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
 <!ATTLIST hbox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -832,12 +912,14 @@
         popup CDATA #IMPLIED
         tooltip CDATA #IMPLIED
         spacing CDATA #IMPLIED
+        widths CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
         onClientInfo CDATA #IMPLIED
+        valign (top|baseline|middle|bottom) #IMPLIED
 >
 
 <!-- html -->
-<!ELEMENT html (attribute | custom-attributes)*>
+<!ELEMENT html (attribute | custom-attributes | variables)*>
 <!ATTLIST html
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -870,7 +952,7 @@
 >
 
 <!-- iframe -->
-<!ELEMENT iframe (attribute | custom-attributes)*>
+<!ELEMENT iframe (attribute | custom-attributes | variables)*>
 <!ATTLIST iframe
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -905,7 +987,7 @@
 >
 
 <!-- image -->
-<!ELEMENT image (attribute | custom-attributes)*>
+<!ELEMENT image (attribute | custom-attributes | variables)*>
 <!ATTLIST image
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -945,7 +1027,7 @@
 >
 
 <!-- imagemap -->
-<!ELEMENT imagemap (attribute | custom-attributes | area)*>
+<!ELEMENT imagemap (attribute | custom-attributes | variables | area)*>
 <!ATTLIST imagemap
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -985,7 +1067,7 @@
 >
 
 <!-- include -->
-<!ELEMENT include (attribute | custom-attributes)*>
+<!ELEMENT include (attribute | custom-attributes | variables)*>
 <!ATTLIST include
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1019,7 +1101,7 @@
 >
 
 <!-- intbox -->
-<!ELEMENT intbox (attribute | custom-attributes)*>
+<!ELEMENT intbox (attribute | custom-attributes | variables)*>
 <!ATTLIST intbox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1052,6 +1134,7 @@
         maxlength CDATA #IMPLIED
         cols CDATA #IMPLIED
         constraint CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
         format CDATA #IMPLIED
         value CDATA #IMPLIED
         onChange CDATA #IMPLIED
@@ -1063,7 +1146,7 @@
 >
 
 <!-- label -->
-<!ELEMENT label (attribute | custom-attributes)*>
+<!ELEMENT label (attribute | custom-attributes | variables)*>
 <!ATTLIST label
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1139,13 +1222,16 @@
         rows CDATA #IMPLIED
         maxlength CDATA #IMPLIED
         name CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
+        model CDATA #IMPLIED
+        itemRenderer CDATA #IMPLIED
         onSelect CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
         onClientInfo CDATA #IMPLIED
 >
 
 <!--listcell -->
-<!ELEMENT listcell (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT listcell (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST listcell
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1174,10 +1260,11 @@
         tooltip CDATA #IMPLIED
         label CDATA #IMPLIED
         image CDATA #IMPLIED
+        span CDATA #IMPLIED
 >
 
 <!-- listfoot -->
-<!ELEMENT listfoot (attribute | custom-attributes | listfooter)*>
+<!ELEMENT listfoot (attribute | custom-attributes | variables | listfooter)*>
 <!ATTLIST listfoot
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1207,7 +1294,7 @@
 >
 
 <!-- listfooter -->
-<!ELEMENT listfooter (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT listfooter (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST listfooter
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1236,13 +1323,14 @@
         tooltip CDATA #IMPLIED
         label CDATA #IMPLIED
         image CDATA #IMPLIED
+        span CDATA #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
         onDoubleClick CDATA #IMPLIED
 >
 
 <!-- listhead -->
-<!ELEMENT listhead (attribute | custom-attributes | listheader)*>
+<!ELEMENT listhead (attribute | custom-attributes | variables | listheader)*>
 <!ATTLIST listhead
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1273,7 +1361,7 @@
 >
 
 <!-- listheader -->
-<!ELEMENT listheader (attribute | custom-attributes)*>
+<!ELEMENT listheader (attribute | custom-attributes | variables)*>
 <!ATTLIST listheader
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1303,7 +1391,7 @@
         label CDATA #IMPLIED
         image CDATA #IMPLIED
         align (left|right|center) #IMPLIED
-        valign (top|middle|bottom) #IMPLIED
+        valign (top|baseline|middle|bottom) #IMPLIED
         sort (auto|none) #IMPLIED
         sortDirection (natural|ascending|descending) #IMPLIED
         sortAscending CDATA #IMPLIED
@@ -1316,7 +1404,7 @@
 >
 
 <!-- listitem -->
-<!ELEMENT listitem (attribute | custom-attributes | listcell)*>
+<!ELEMENT listitem (attribute | custom-attributes | variables | listcell)*>
 <!ATTLIST listitem
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1350,7 +1438,7 @@
 >
 
 <!-- menu -->
-<!ELEMENT menu ((attribute | custom-attributes)*,(menupopup,(attribute | custom-attributes)*)?)>
+<!ELEMENT menu ((attribute | custom-attributes | variables)*,(menupopup,(attribute | custom-attributes | variables)*)?)>
 <!ATTLIST menu
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1382,7 +1470,7 @@
 >
 
 <!-- menubar -->
-<!ELEMENT menubar (attribute | custom-attributes | menu)*>
+<!ELEMENT menubar (attribute | custom-attributes | variables | menu)*>
 <!ATTLIST menubar
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1416,7 +1504,7 @@
 >
 
 <!-- menuitem -->
-<!ELEMENT menuitem (attribute | custom-attributes)*>
+<!ELEMENT menuitem (attribute | custom-attributes | variables)*>
 <!ATTLIST menuitem
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1454,7 +1542,7 @@
 >
 
 <!-- menupopup -->
-<!ELEMENT menupopup (attribute | custom-attributes | menu | menuitem | menuseparator)*>
+<!ELEMENT menupopup (attribute | custom-attributes | variables | menu | menuitem | menuseparator)*>
 <!ATTLIST menupopup
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1485,7 +1573,7 @@
 >
 
 <!-- menuseparator -->
-<!ELEMENT menuseparator (attribute | custom-attributes)*>
+<!ELEMENT menuseparator (attribute | custom-attributes | variables)*>
 <!ATTLIST menuseparator
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1515,7 +1603,7 @@
 >
 
 <!-- paging -->
-<!ELEMENT paging (attribute | custom-attributes)*>
+<!ELEMENT paging (attribute | custom-attributes | variables)*>
 <!ATTLIST paging
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1551,7 +1639,7 @@
 >
 
 <!-- popup -->
-<!ELEMENT popup (attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | menu | menuitem | menuseparator)*>
+<!ELEMENT popup (attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | menu | menuitem | menuseparator)*>
 <!ATTLIST popup
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1584,7 +1672,7 @@
 >
 
 <!-- progressmeter -->
-<!ELEMENT progressmeter (attribute | custom-attributes)*>
+<!ELEMENT progressmeter (attribute | custom-attributes | variables)*>
 <!ATTLIST progressmeter
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1615,7 +1703,7 @@
 >
 
 <!-- radio -->
-<!ELEMENT radio (attribute | custom-attributes)*>
+<!ELEMENT radio (attribute | custom-attributes | variables)*>
 <!ATTLIST radio
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1648,6 +1736,7 @@
         checked CDATA #IMPLIED
         disabled CDATA #IMPLIED
         readonly CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
         onFocus CDATA #IMPLIED
         onBlur CDATA #IMPLIED
@@ -1655,7 +1744,7 @@
 >
 
 <!-- radiogroup -->
-<!ELEMENT radiogroup (attribute | custom-attributes | radio)*>
+<!ELEMENT radiogroup (attribute | custom-attributes | variables | radio)*>
 <!ATTLIST radiogroup
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1690,7 +1779,7 @@
 >
 
 <!-- row -->
-<!ELEMENT row (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
+<!ELEMENT row (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
 <!ATTLIST row
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1719,11 +1808,13 @@
         tooltip CDATA #IMPLIED
         align (left|right|center) #IMPLIED
         nowrap CDATA #IMPLIED
-        valign (top|middle|bottom) #IMPLIED
+        spans CDATA #IMPLIED
+        valign (top|baseline|middle|bottom) #IMPLIED
+        value CDATA #IMPLIED
 >
 
 <!-- rows -->
-<!ELEMENT rows (attribute | custom-attributes | row)*>
+<!ELEMENT rows (attribute | custom-attributes | variables | row)*>
 <!ATTLIST rows
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1752,8 +1843,26 @@
         tooltip CDATA #IMPLIED
 >
 
+<!-- script -->
+<!ELEMENT script (#PCDATA | attribute | custom-attributes | variables)*>
+<!ATTLIST script
+        if CDATA #IMPLIED
+        unless CDATA #IMPLIED
+        forEach CDATA #IMPLIED
+        forEachBegin CDATA #IMPLIED
+        forEachEnd CDATA #IMPLIED
+        id ID #IMPLIED
+        visible CDATA #IMPLIED
+        mold CDATA #IMPLIED
+        use CDATA #IMPLIED
+        src CDATA #IMPLIED
+        type CDATA #REQUIRED
+        charset CDATA #IMPLIED
+        defer CDATA #IMPLIED
+>
+
 <!-- separator -->
-<!ELEMENT separator (attribute | custom-attributes)*>
+<!ELEMENT separator (attribute | custom-attributes | variables)*>
 <!ATTLIST separator
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1788,7 +1897,7 @@
 >
 
 <!-- slider -->
-<!ELEMENT slider (attribute | custom-attributes)*>
+<!ELEMENT slider (attribute | custom-attributes | variables)*>
 <!ATTLIST slider
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1826,7 +1935,7 @@
 >
 
 <!-- space -->
-<!ELEMENT space (attribute | custom-attributes)*>
+<!ELEMENT space (attribute | custom-attributes | variables)*>
 <!ATTLIST space
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1861,7 +1970,7 @@
 >
 
 <!-- splitter -->
-<!ELEMENT splitter (attribute | custom-attributes)*>
+<!ELEMENT splitter (attribute | custom-attributes | variables)*>
 <!ATTLIST splitter
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1894,7 +2003,7 @@
 >
 
 <!-- style -->
-<!ELEMENT style (#PCDATA | attribute | custom-attributes)*>
+<!ELEMENT style (#PCDATA | attribute | custom-attributes | variables)*>
 <!ATTLIST style
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1909,7 +2018,7 @@
 >
 
 <!-- tab -->
-<!ELEMENT tab (attribute | custom-attributes)*>
+<!ELEMENT tab (attribute | custom-attributes | variables)*>
 <!ATTLIST tab
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1940,12 +2049,13 @@
         image CDATA #IMPLIED
         selected CDATA #IMPLIED
         closable CDATA #IMPLIED
+        onClose CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
         onDoubleClick CDATA #IMPLIED
 >
 
 <!-- tabbox -->
-<!ELEMENT tabbox (attribute | custom-attributes | tabs | tabpanels)*>
+<!ELEMENT tabbox (attribute | custom-attributes | variables | tabs | tabpanels)*>
 <!ATTLIST tabbox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -1982,7 +2092,7 @@
 >
 
 <!-- tabpanel -->
-<!ELEMENT tabpanel (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT tabpanel (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST tabpanel
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2015,7 +2125,7 @@
 >
 
 <!-- tabpanels -->
-<!ELEMENT tabpanels (attribute | custom-attributes | tabpanel)*>
+<!ELEMENT tabpanels (attribute | custom-attributes | variables | tabpanel)*>
 <!ATTLIST tabpanels
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2045,7 +2155,7 @@
 >
 
 <!-- tabs -->
-<!ELEMENT tabs (attribute | custom-attributes | tab)*>
+<!ELEMENT tabs (attribute | custom-attributes | variables | tab)*>
 <!ATTLIST tabs
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2074,7 +2184,8 @@
         tooltip CDATA #IMPLIED
 >
 
-<!ELEMENT textbox (attribute | custom-attributes)*>
+<!-- textbox -->
+<!ELEMENT textbox (attribute | custom-attributes | variables)*>
 <!ATTLIST textbox
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2107,6 +2218,7 @@
         maxlength CDATA #IMPLIED
         cols CDATA #IMPLIED
         constraint CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
         value CDATA #IMPLIED
         type (text|password) #IMPLIED
         rows CDATA #IMPLIED
@@ -2120,7 +2232,7 @@
 >
 
 <!-- timer -->
-<!ELEMENT timer (attribute | custom-attributes)*>
+<!ELEMENT timer (attribute | custom-attributes | variables)*>
 <!ATTLIST timer
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2156,7 +2268,7 @@
 >
 
 <!-- toolbar -->
-<!ELEMENT toolbar (attribute | custom-attributes | toolbarbutton | button | image)*>
+<!ELEMENT toolbar (attribute | custom-attributes | variables | toolbarbutton | button | image)*>
 <!ATTLIST toolbar
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2192,7 +2304,7 @@
 >
 
 <!-- toolbarbutton -->
-<!ELEMENT toolbarbutton (attribute | custom-attributes)*>
+<!ELEMENT toolbarbutton (attribute | custom-attributes | variables)*>
 <!ATTLIST toolbarbutton
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2225,6 +2337,7 @@
         dir (normal|reverse) #IMPLIED
         href CDATA #IMPLIED
         target CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
         onFocus CDATA #IMPLIED
@@ -2234,7 +2347,7 @@
 >
 
 <!-- tree -->
-<!ELEMENT tree ((attribute | custom-attributes)*,((treecols,(attribute | custom-attributes)*,(treechildren,(attribute | custom-attributes)*)?) | (treechildren,(attribute | custom-attributes)*,(treecols,(attribute | custom-attributes)*)?))?)>
+<!ELEMENT tree (attribute | custom-attributes | variables | treechildren | treecols | treefoot)*>
 <!ATTLIST tree
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2272,7 +2385,7 @@
 >
 
 <!-- treecell -->
-<!ELEMENT treecell (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
+<!ELEMENT treecell (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
 <!ATTLIST treecell
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2301,10 +2414,11 @@
         tooltip CDATA #IMPLIED
         label CDATA #IMPLIED
         image CDATA #IMPLIED
+        span CDATA #IMPLIED
 >
 
 <!-- treechildren -->
-<!ELEMENT treechildren (attribute | custom-attributes | treeitem)*>
+<!ELEMENT treechildren (attribute | custom-attributes | variables | treeitem)*>
 <!ATTLIST treechildren 
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2334,7 +2448,7 @@
 >
 
 <!-- treecol -->
-<!ELEMENT treecol (attribute | custom-attributes)*>
+<!ELEMENT treecol (attribute | custom-attributes | variables)*>
 <!ATTLIST treecol
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2364,7 +2478,7 @@
         label CDATA #IMPLIED
         image CDATA #IMPLIED
         align (left|right|center) #IMPLIED
-        valign (top|middle|bottom) #IMPLIED
+        valign (top|baseline|middle|bottom) #IMPLIED
         maxlength CDATA #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
@@ -2372,7 +2486,7 @@
 >
 
 <!-- treecols -->
-<!ELEMENT treecols (attribute | custom-attributes | treecol)*>
+<!ELEMENT treecols (attribute | custom-attributes | variables | treecol)*>
 <!ATTLIST treecols
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2402,8 +2516,75 @@
         sizable CDATA #IMPLIED
 >
 
+<!-- treefoot -->
+<!ELEMENT treefoot (attribute | custom-attributes | variables | treefooter)*>
+<!ATTLIST treefoot
+        if CDATA #IMPLIED
+        unless CDATA #IMPLIED
+        forEach CDATA #IMPLIED
+        forEachBegin CDATA #IMPLIED
+        forEachEnd CDATA #IMPLIED
+        id ID #IMPLIED
+        visible CDATA #IMPLIED
+        mold CDATA #IMPLIED
+        use CDATA #IMPLIED
+        width CDATA #IMPLIED
+        height CDATA #IMPLIED
+        sclass CDATA #IMPLIED
+        style CDATA #IMPLIED
+        left CDATA #IMPLIED
+        top CDATA #IMPLIED
+        draggable CDATA #IMPLIED
+        droppable CDATA #IMPLIED
+        tooltiptext CDATA #IMPLIED
+        zindex CDATA #IMPLIED
+        onCreate CDATA #IMPLIED
+        onDrop CDATA #IMPLIED
+        action CDATA #IMPLIED
+        context CDATA #IMPLIED
+        popup CDATA #IMPLIED
+        tooltip CDATA #IMPLIED
+>
+
+<!-- treefooter -->
+<!ELEMENT treefooter (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
+<!ATTLIST treefooter
+        if CDATA #IMPLIED
+        unless CDATA #IMPLIED
+        forEach CDATA #IMPLIED
+        forEachBegin CDATA #IMPLIED
+        forEachEnd CDATA #IMPLIED
+        id ID #IMPLIED
+        visible CDATA #IMPLIED
+        mold CDATA #IMPLIED
+        use CDATA #IMPLIED
+        width CDATA #IMPLIED
+        height CDATA #IMPLIED
+        sclass CDATA #IMPLIED
+        style CDATA #IMPLIED
+        left CDATA #IMPLIED
+        top CDATA #IMPLIED
+        draggable CDATA #IMPLIED
+        droppable CDATA #IMPLIED
+        tooltiptext CDATA #IMPLIED
+        zindex CDATA #IMPLIED
+        onCreate CDATA #IMPLIED
+        onDrop CDATA #IMPLIED
+        action CDATA #IMPLIED
+        context CDATA #IMPLIED
+        popup CDATA #IMPLIED
+        tooltip CDATA #IMPLIED
+        label CDATA #IMPLIED
+        image CDATA #IMPLIED
+        span CDATA #IMPLIED
+        onClick CDATA #IMPLIED
+        onRightClick CDATA #IMPLIED
+        onDoubleClick CDATA #IMPLIED
+>
+
+
 <!-- treeitem -->
-<!ELEMENT treeitem ((attribute | custom-attributes)*,((treerow,(attribute | custom-attributes)*,(treechildren,(attribute | custom-attributes)*)?) | (treechildren,(attribute | custom-attributes)*,(treerow,(attribute | custom-attributes)*)?))?)>
+<!ELEMENT treeitem ((attribute | custom-attributes | variables)*,((treerow,(attribute | custom-attributes | variables)*,(treechildren,(attribute | custom-attributes | variables)*)?) | (treechildren,(attribute | custom-attributes | variables)*,(treerow,(attribute | custom-attributes | variables)*)?))?)>
 <!ATTLIST treeitem
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2438,7 +2619,7 @@
 >
 
 <!-- treerow -->
-<!ELEMENT treerow (attribute | custom-attributes | treecell)*>
+<!ELEMENT treerow (attribute | custom-attributes | variables | treecell)*>
 <!ATTLIST treerow
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2467,8 +2648,11 @@
         tooltip CDATA #IMPLIED
 >
 
+<!-- variables -->
+<!ELEMENT variables EMPTY>
+
 <!-- vbox -->
-<!ELEMENT vbox (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
+<!ELEMENT vbox (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
 <!ATTLIST vbox
        if CDATA #IMPLIED
         unless CDATA #IMPLIED
@@ -2496,8 +2680,10 @@
         popup CDATA #IMPLIED
         tooltip CDATA #IMPLIED
         spacing CDATA #IMPLIED
+        heights CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
         onClientInfo CDATA #IMPLIED
+        valign (top|baseline|middle|bottom) #IMPLIED
 >
 
 <!-- window -->
@@ -2552,7 +2738,7 @@
 >
 
 <!-- zk -->
-<!ELEMENT zk (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
+<!ELEMENT zk (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
 <!ATTLIST zk
         if CDATA #IMPLIED
         unless CDATA #IMPLIED
