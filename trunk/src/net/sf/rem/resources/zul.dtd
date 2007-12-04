@@ -12,18 +12,25 @@
     SYSTEM ID  : nbres:/net/sf/rem/resources/zul.dtd
 -->
 
-<!-- area -->
-<!ELEMENT area (attribute | custom-attributes | variables)*>
-<!ATTLIST area 
-        if CDATA #IMPLIED
+<!ENTITY % zkAttrGroup "if CDATA #IMPLIED
         unless CDATA #IMPLIED
         forEach CDATA #IMPLIED
         forEachBegin CDATA #IMPLIED
         forEachEnd CDATA #IMPLIED
+        fulfill CDATA #IMPLIED
+">
+
+<!ENTITY % abstractComponentAttrGroup "%zkAttrGroup;
         id ID #IMPLIED
         visible CDATA #IMPLIED
         mold CDATA #IMPLIED
         use CDATA #IMPLIED
+">
+
+<!-- area -->
+<!ELEMENT area (attribute | custom-attributes | variables)*>
+<!ATTLIST area 
+        %abstractComponentAttrGroup;
         shape CDATA #IMPLIED
         coords CDATA #IMPLIED
         tooltiptext CDATA #IMPLIED
@@ -32,11 +39,7 @@
 <!-- attribute --> 
 <!ELEMENT attribute (#PCDATA)>
 <!ATTLIST attribute
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
+        %zkAttrGroup;
         name CDATA #REQUIRED
         trim CDATA #IMPLIED
 >
@@ -44,15 +47,7 @@
 <!-- audio -->
 <!ELEMENT audio  (attribute | custom-attributes | variables)*>
 <!ATTLIST audio
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -80,15 +75,7 @@
 <!-- bandbox -->
 <!ELEMENT bandbox ((attribute | custom-attributes | variables)*,(bandpopup,(attribute | custom-attributes | variables)*)?)>
 <!ATTLIST bandbox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -129,15 +116,7 @@
 <!-- bandpopup -->
 <!ELEMENT bandpopup (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging |  popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST bandpopup 
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -159,15 +138,7 @@
 <!-- box -->
 <!ELEMENT box (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart |  checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging |  popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
 <!ATTLIST box 
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -196,15 +167,7 @@
 <!-- button -->
 <!ELEMENT button (attribute | custom-attributes | variables)*>
 <!ATTLIST button
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -240,15 +203,7 @@
 <!-- calendar -->
 <!ELEMENT calendar (attribute | custom-attributes | variables)*>
 <!ATTLIST calendar 
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -276,15 +231,7 @@
 <!-- caption -->
 <!ELEMENT caption (#PCDATA | attribute | custom-attributes | varaibles | audio | bandbox | box | button | calendar | chart |  checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST caption
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -311,15 +258,7 @@
 <!-- chart -->
 <!ELEMENT chart (attribute | custom-attributes | variables)*>
 <!ATTLIST chart
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -366,15 +305,7 @@
 <!-- checkbox -->
 <!ELEMENT checkbox (attribute | custom-attributes | variables)*>
 <!ATTLIST checkbox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -408,15 +339,7 @@
 <!-- column -->
 <!ELEMENT column (attribute | custom-attributes | variables)*>
 <!ATTLIST column
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -449,15 +372,7 @@
 <!-- columns -->
 <!ELEMENT columns (attribute | custom-attributes | variables | column)*>
 <!ATTLIST columns
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -480,15 +395,7 @@
 <!-- combobox -->
 <!ELEMENT combobox (attribute | custom-attributes | variables | comboitem)*>
 <!ATTLIST combobox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -528,15 +435,7 @@
 <!-- comboitem -->
 <!ELEMENT comboitem (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart |  checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST comboitem
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -564,15 +463,7 @@
 <!-- datebox -->
 <!ELEMENT datebox (attribute | custom-attributes | variables)*>
 <!ATTLIST datebox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -612,15 +503,7 @@
 <!-- decimalbox -->
 <!ELEMENT decimalbox (attribute | custom-attributes | variables)*>
 <!ATTLIST decimalbox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -658,15 +541,7 @@
 <!-- div -->
 <!ELEMENT div (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST div
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -694,15 +569,7 @@
 <!-- doublebox -->
 <!ELEMENT doublebox (attribute | custom-attributes | variables)*>
 <!ATTLIST doublebox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -739,15 +606,7 @@
 <!-- foot -->
 <!ELEMENT foot (attribute | custom-attributes | variables | footer)*>
 <!ATTLIST foot
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -769,15 +628,7 @@
 <!-- footer -->
 <!ELEMENT footer (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST footer 
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -806,15 +657,7 @@
 <!-- grid -->
 <!ELEMENT grid (attribute | custom-attributes | variables | columns | rows | foot)*>
 <!ATTLIST grid
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -847,15 +690,7 @@
 -->
 <!ELEMENT groupbox (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | caption)*>
 <!ATTLIST groupbox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -886,15 +721,7 @@
 <!-- hbox -->
 <!ELEMENT hbox (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | chart | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
 <!ATTLIST hbox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -921,15 +748,7 @@
 <!-- html -->
 <!ELEMENT html (attribute | custom-attributes | variables)*>
 <!ATTLIST html
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -954,15 +773,7 @@
 <!-- iframe -->
 <!ELEMENT iframe (attribute | custom-attributes | variables)*>
 <!ATTLIST iframe
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -989,15 +800,7 @@
 <!-- image -->
 <!ELEMENT image (attribute | custom-attributes | variables)*>
 <!ATTLIST image
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1029,15 +832,7 @@
 <!-- imagemap -->
 <!ELEMENT imagemap (attribute | custom-attributes | variables | area)*>
 <!ATTLIST imagemap
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1069,15 +864,7 @@
 <!-- include -->
 <!ELEMENT include (attribute | custom-attributes | variables)*>
 <!ATTLIST include
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1103,15 +890,7 @@
 <!-- intbox -->
 <!ELEMENT intbox (attribute | custom-attributes | variables)*>
 <!ATTLIST intbox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1148,15 +927,7 @@
 <!-- label -->
 <!ELEMENT label (attribute | custom-attributes | variables)*>
 <!ATTLIST label
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1186,15 +957,7 @@
 <!-- listbox -->
 <!ELEMENT listbox ((attribute | custom-attributes | listitem)*,((listhead,(attribute | custom-attributes | listitem)*,(listfoot,(attribute | custom-attributes | listitem)*)?) | (listfoot,(attribute | custom-attributes | listitem)*,(listhead,(attribute | custom-attributes | listitem)*)?))?)>
 <!ATTLIST listbox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1233,15 +996,7 @@
 <!--listcell -->
 <!ELEMENT listcell (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST listcell
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1266,15 +1021,7 @@
 <!-- listfoot -->
 <!ELEMENT listfoot (attribute | custom-attributes | variables | listfooter)*>
 <!ATTLIST listfoot
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1296,15 +1043,7 @@
 <!-- listfooter -->
 <!ELEMENT listfooter (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST listfooter
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1332,15 +1071,7 @@
 <!-- listhead -->
 <!ELEMENT listhead (attribute | custom-attributes | variables | listheader)*>
 <!ATTLIST listhead
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1363,15 +1094,7 @@
 <!-- listheader -->
 <!ELEMENT listheader (attribute | custom-attributes | variables)*>
 <!ATTLIST listheader
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1406,15 +1129,7 @@
 <!-- listitem -->
 <!ELEMENT listitem (attribute | custom-attributes | variables | listcell)*>
 <!ATTLIST listitem
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1440,15 +1155,7 @@
 <!-- menu -->
 <!ELEMENT menu ((attribute | custom-attributes | variables)*,(menupopup,(attribute | custom-attributes | variables)*)?)>
 <!ATTLIST menu
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1472,15 +1179,7 @@
 <!-- menubar -->
 <!ELEMENT menubar (attribute | custom-attributes | variables | menu)*>
 <!ATTLIST menubar
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1506,15 +1205,7 @@
 <!-- menuitem -->
 <!ELEMENT menuitem (attribute | custom-attributes | variables)*>
 <!ATTLIST menuitem
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1544,15 +1235,7 @@
 <!-- menupopup -->
 <!ELEMENT menupopup (attribute | custom-attributes | variables | menu | menuitem | menuseparator)*>
 <!ATTLIST menupopup
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1575,15 +1258,7 @@
 <!-- menuseparator -->
 <!ELEMENT menuseparator (attribute | custom-attributes | variables)*>
 <!ATTLIST menuseparator
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1605,15 +1280,7 @@
 <!-- paging -->
 <!ELEMENT paging (attribute | custom-attributes | variables)*>
 <!ATTLIST paging
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1641,15 +1308,7 @@
 <!-- popup -->
 <!ELEMENT popup (attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | menu | menuitem | menuseparator)*>
 <!ATTLIST popup
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1674,15 +1333,7 @@
 <!-- progressmeter -->
 <!ELEMENT progressmeter (attribute | custom-attributes | variables)*>
 <!ATTLIST progressmeter
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1705,15 +1356,7 @@
 <!-- radio -->
 <!ELEMENT radio (attribute | custom-attributes | variables)*>
 <!ATTLIST radio
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1746,15 +1389,7 @@
 <!-- radiogroup -->
 <!ELEMENT radiogroup (attribute | custom-attributes | variables | radio)*>
 <!ATTLIST radiogroup
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1781,15 +1416,7 @@
 <!-- row -->
 <!ELEMENT row (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
 <!ATTLIST row
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1816,15 +1443,7 @@
 <!-- rows -->
 <!ELEMENT rows (attribute | custom-attributes | variables | row)*>
 <!ATTLIST rows
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1846,15 +1465,7 @@
 <!-- script -->
 <!ELEMENT script (#PCDATA | attribute | custom-attributes | variables)*>
 <!ATTLIST script
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         src CDATA #IMPLIED
         type CDATA #REQUIRED
         charset CDATA #IMPLIED
@@ -1864,15 +1475,7 @@
 <!-- separator -->
 <!ELEMENT separator (attribute | custom-attributes | variables)*>
 <!ATTLIST separator
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1899,15 +1502,7 @@
 <!-- slider -->
 <!ELEMENT slider (attribute | custom-attributes | variables)*>
 <!ATTLIST slider
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1937,15 +1532,7 @@
 <!-- space -->
 <!ELEMENT space (attribute | custom-attributes | variables)*>
 <!ATTLIST space
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -1972,15 +1559,7 @@
 <!-- splitter -->
 <!ELEMENT splitter (attribute | custom-attributes | variables)*>
 <!ATTLIST splitter
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2005,30 +1584,14 @@
 <!-- style -->
 <!ELEMENT style (#PCDATA | attribute | custom-attributes | variables)*>
 <!ATTLIST style
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         src CDATA #IMPLIED
 >
 
 <!-- tab -->
 <!ELEMENT tab (attribute | custom-attributes | variables)*>
 <!ATTLIST tab
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2057,15 +1620,7 @@
 <!-- tabbox -->
 <!ELEMENT tabbox (attribute | custom-attributes | variables | tabs | tabpanels)*>
 <!ATTLIST tabbox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2094,15 +1649,7 @@
 <!-- tabpanel -->
 <!ELEMENT tabpanel (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
 <!ATTLIST tabpanel
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2127,15 +1674,7 @@
 <!-- tabpanels -->
 <!ELEMENT tabpanels (attribute | custom-attributes | variables | tabpanel)*>
 <!ATTLIST tabpanels
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2157,15 +1696,7 @@
 <!-- tabs -->
 <!ELEMENT tabs (attribute | custom-attributes | variables | tab)*>
 <!ATTLIST tabs
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2187,15 +1718,7 @@
 <!-- textbox -->
 <!ELEMENT textbox (attribute | custom-attributes | variables)*>
 <!ATTLIST textbox
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2234,15 +1757,7 @@
 <!-- timer -->
 <!ELEMENT timer (attribute | custom-attributes | variables)*>
 <!ATTLIST timer
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2270,15 +1785,7 @@
 <!-- toolbar -->
 <!ELEMENT toolbar (attribute | custom-attributes | variables | toolbarbutton | button | image)*>
 <!ATTLIST toolbar
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2306,15 +1813,7 @@
 <!-- toolbarbutton -->
 <!ELEMENT toolbarbutton (attribute | custom-attributes | variables)*>
 <!ATTLIST toolbarbutton
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2349,15 +1848,7 @@
 <!-- tree -->
 <!ELEMENT tree (attribute | custom-attributes | variables | treechildren | treecols | treefoot)*>
 <!ATTLIST tree
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2387,15 +1878,7 @@
 <!-- treecell -->
 <!ELEMENT treecell (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
 <!ATTLIST treecell
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2420,15 +1903,7 @@
 <!-- treechildren -->
 <!ELEMENT treechildren (attribute | custom-attributes | variables | treeitem)*>
 <!ATTLIST treechildren 
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2450,15 +1925,7 @@
 <!-- treecol -->
 <!ELEMENT treecol (attribute | custom-attributes | variables)*>
 <!ATTLIST treecol
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2488,15 +1955,7 @@
 <!-- treecols -->
 <!ELEMENT treecols (attribute | custom-attributes | variables | treecol)*>
 <!ATTLIST treecols
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2519,15 +1978,7 @@
 <!-- treefoot -->
 <!ELEMENT treefoot (attribute | custom-attributes | variables | treefooter)*>
 <!ATTLIST treefoot
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2549,15 +2000,7 @@
 <!-- treefooter -->
 <!ELEMENT treefooter (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
 <!ATTLIST treefooter
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2586,15 +2029,7 @@
 <!-- treeitem -->
 <!ELEMENT treeitem ((attribute | custom-attributes | variables)*,((treerow,(attribute | custom-attributes | variables)*,(treechildren,(attribute | custom-attributes | variables)*)?) | (treechildren,(attribute | custom-attributes | variables)*,(treerow,(attribute | custom-attributes | variables)*)?))?)>
 <!ATTLIST treeitem
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2621,15 +2056,7 @@
 <!-- treerow -->
 <!ELEMENT treerow (attribute | custom-attributes | variables | treecell)*>
 <!ATTLIST treerow
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2654,15 +2081,7 @@
 <!-- vbox -->
 <!ELEMENT vbox (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
 <!ATTLIST vbox
-       if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2692,15 +2111,7 @@
 -->
 <!ELEMENT window (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | caption)*>
 <!ATTLIST window
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
-        id ID #IMPLIED
-        visible CDATA #IMPLIED
-        mold CDATA #IMPLIED
-        use CDATA #IMPLIED
+        %abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -2740,20 +2151,12 @@
 <!-- zk -->
 <!ELEMENT zk (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
 <!ATTLIST zk
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
+        %zkAttrGroup;
 >
 
 <!-- zscript -->
 <!ELEMENT zscript (#PCDATA)>
 <!ATTLIST zscript
-        if CDATA #IMPLIED
-        unless CDATA #IMPLIED
-        forEach CDATA #IMPLIED
-        forEachBegin CDATA #IMPLIED
-        forEachEnd CDATA #IMPLIED
+        %zkAttrGroup;
         src CDATA #IMPLIED
 >
