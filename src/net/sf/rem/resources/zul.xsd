@@ -132,6 +132,7 @@
 		<xs:attribute name="forEach" type="xs:string" use="optional" />
 		<xs:attribute name="forEachBegin" type="xs:string" use="optional" />
 		<xs:attribute name="forEachEnd" type="xs:string" use="optional" />
+		<xs:attribute name="fulfill" type="xs:string" use="optional" />
 		<xs:anyAttribute processContents="lax" />
 	</xs:attributeGroup>
 	<xs:attributeGroup name="abstractComponentAttrGroup">
@@ -465,6 +466,7 @@
 		<xs:group ref="anyGroup" minOccurs="0" maxOccurs="unbounded" />
 		<xs:attributeGroup ref="labelImageElementAttrGroup" />
 		<xs:attribute name="description" type="xs:string" use="optional" />
+		<xs:attribute name="value" type="xs:string" use="optional" />
 	</xs:complexType>
 	<!-- custom-attributes -->
 	<xs:element name="custom-attributes" type="custom-attributesType" />
@@ -687,6 +689,7 @@
 		<xs:attribute name="name" type="xs:string" use="optional" />
 		<xs:attribute name="src" type="xs:string" use="optional" />
 		<xs:attribute name="align" type="alignAttrType" use="optional" />
+		<xs:attribute name="autohide" type="xs:string" use="optional" />		
 		<xs:attribute name="onBookmarkChanged" type="xs:string" use="optional" />
 		<xs:attribute name="onClientInfo" type="xs:string" use="optional" />
 	</xs:complexType>
@@ -1421,6 +1424,7 @@
 		<xs:attribute name="mode" type="windowModeAttrType" use="optional" />
 		<xs:attribute name="closable" type="xs:string" use="optional" />
 		<xs:attribute name="sizable" type="xs:string" use="optional" />
+		<xs:attribute name="position" type="xs:string" use="optional" />
 		<xs:attribute name="contentStyle" type="xs:string" use="optional" />
 		<xs:attribute name="onClick" type="xs:string" use="optional" />
 		<xs:attribute name="onRightClick" type="xs:string" use="optional" />
@@ -1495,6 +1499,7 @@
 			<xs:extension base="xs:string">
 				<xs:attributeGroup ref="zkAttrGroup" />
 				<xs:attribute name="src" type="xs:string" use="optional" />
+				<xs:attribute name="deferred" type="xs:string" use="optional" />
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
