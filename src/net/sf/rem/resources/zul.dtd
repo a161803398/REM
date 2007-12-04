@@ -455,6 +455,7 @@
         label CDATA #IMPLIED
         image CDATA #IMPLIED
         description CDATA #IMPLIED
+        value CDATA #IMPLIED
 >
         
 <!-- custom-attributes -->
@@ -793,6 +794,7 @@
         name CDATA #IMPLIED
         src CDATA #IMPLIED
         align (top|texttop|middle|absmiddle|bottom|absbottom|baseline|left|right|center) #IMPLIED
+        autohide CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
         onClientInfo CDATA #IMPLIED
 >
@@ -2134,6 +2136,8 @@
         mode (embedded|modal|overlapped|popup) #IMPLIED
         closable CDATA #IMPLIED
         sizable CDATA #IMPLIED
+        position CDATA #IMPLIED
+        contentStyle CDATA #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
         onDoubleClick CDATA #IMPLIED
@@ -2159,4 +2163,5 @@
 <!ATTLIST zscript
         %zkAttrGroup;
         src CDATA #IMPLIED
+        deferred CDATA #IMPLIED
 >
