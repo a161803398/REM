@@ -27,27 +27,7 @@
         use CDATA #IMPLIED
 ">
 
-<!-- area -->
-<!ELEMENT area (attribute | custom-attributes | variables)*>
-<!ATTLIST area 
-        %abstractComponentAttrGroup;
-        shape CDATA #IMPLIED
-        coords CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
->
-       
-<!-- attribute --> 
-<!ELEMENT attribute (#PCDATA)>
-<!ATTLIST attribute
-        %zkAttrGroup;
-        name CDATA #REQUIRED
-        trim CDATA #IMPLIED
->
-        
-<!-- audio -->
-<!ELEMENT audio  (attribute | custom-attributes | variables)*>
-<!ATTLIST audio
-        %abstractComponentAttrGroup;
+<!ENTITY % htmlBasedComponentAttrGroup "%abstractComponentAttrGroup;
         width CDATA #IMPLIED
         height CDATA #IMPLIED
         sclass CDATA #IMPLIED
@@ -60,10 +40,66 @@
         zindex CDATA #IMPLIED
         onCreate CDATA #IMPLIED
         onDrop CDATA #IMPLIED
+">
+
+<!ENTITY % xulElementAttrGroup "%htmlBasedComponentAttrGroup;
         action CDATA #IMPLIED
         context CDATA #IMPLIED
         popup CDATA #IMPLIED
         tooltip CDATA #IMPLIED
+">
+<!ENTITY % inputElementAttrGroup "%xulElementAttrGroup;
+        name CDATA #IMPLIED
+        disabled CDATA #IMPLIED
+        readonly CDATA #IMPLIED
+        maxlength CDATA #IMPLIED
+        cols CDATA #IMPLIED
+        constraint CDATA #IMPLIED
+        tabindex CDATA #IMPLIED
+">
+
+<!ENTITY % formatInputElementAttrGroup "%inputElementAttrGroup;
+        format CDATA #IMPLIED
+">
+
+<!ENTITY % labelElementAttrGroup "%xulElementAttrGroup;
+        label CDATA #IMPLIED
+">
+
+<!ENTITY % labelImageElementAttrGroup "%labelElementAttrGroup;
+        image CDATA #IMPLIED
+">
+
+<!ENTITY % headerElementAttrGroup "%labelImageElementAttrGroup;
+        align (left|right|center) #IMPLIED
+        valign (top|baseline|middle|bottom) #IMPLIED
+">
+
+<!ENTITY % baseGroup "attribute | custom-attributes | variables">
+
+<!ENTITY % anyGroup "%baseGroup; | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging |  popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript">
+
+<!-- area -->
+<!ELEMENT area (%baseGroup;)*>
+<!ATTLIST area
+        %abstractComponentAttrGroup;
+        shape CDATA #IMPLIED
+        coords CDATA #IMPLIED
+        tooltiptext CDATA #IMPLIED
+>
+
+<!-- attribute -->
+<!ELEMENT attribute (#PCDATA)>
+<!ATTLIST attribute
+        %zkAttrGroup;
+        name CDATA #REQUIRED
+        trim CDATA #IMPLIED
+>
+
+<!-- audio -->
+<!ELEMENT audio  (%baseGroup;)*>
+<!ATTLIST audio
+        %xulElementAttrGroup;
         align (top|texttop|middle|absmiddle|bottom|absbottom|baseline|left|right|center) #IMPLIED
         border CDATA #IMPLIED
         src CDATA #IMPLIED
@@ -73,32 +109,9 @@
 >
 
 <!-- bandbox -->
-<!ELEMENT bandbox ((attribute | custom-attributes | variables)*,(bandpopup,(attribute | custom-attributes | variables)*)?)>
+<!ELEMENT bandbox ((%baseGroup;)*,(bandpopup,(%baseGroup;)*)?)>
 <!ATTLIST bandbox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        name CDATA #IMPLIED
-        disabled CDATA #IMPLIED
-        readonly CDATA #IMPLIED
-        maxlength CDATA #IMPLIED
-        cols CDATA #IMPLIED
-        constraint CDATA #IMPLIED
-        tabindex CDATA #IMPLIED
+        %inputElementAttrGroup;
         autodrop CDATA #IMPLIED
         buttonVisible CDATA #IMPLIED
         image CDATA #IMPLIED
@@ -114,47 +127,15 @@
 >
 
 <!-- bandpopup -->
-<!ELEMENT bandpopup (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging |  popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
-<!ATTLIST bandpopup 
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+<!ELEMENT bandpopup (#PCDATA | %anyGroup; )*>
+<!ATTLIST bandpopup
+        %xulElementAttrGroup;
 >
 
 <!-- box -->
-<!ELEMENT box (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart |  checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging |  popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
-<!ATTLIST box 
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+<!ELEMENT box (#PCDATA | %anyGroup; | splitter)*>
+<!ATTLIST box
+        %xulElementAttrGroup;
         orient (horizontal|vertical) #IMPLIED
         spacing CDATA #IMPLIED
         widths CDATA #IMPLIED
@@ -165,27 +146,9 @@
 >
 
 <!-- button -->
-<!ELEMENT button (attribute | custom-attributes | variables)*>
+<!ELEMENT button (%baseGroup;)*>
 <!ATTLIST button
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+        %labelImageElementAttrGroup;
         orient (horizontal|vertical) #IMPLIED
         dir (normal|reverse) #IMPLIED
         href CDATA #IMPLIED
@@ -201,25 +164,9 @@
 >
 
 <!-- calendar -->
-<!ELEMENT calendar (attribute | custom-attributes | variables)*>
-<!ATTLIST calendar 
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+<!ELEMENT calendar (%baseGroup;)*>
+<!ATTLIST calendar
+        %xulElementAttrGroup;
         value CDATA #IMPLIED
         compact CDATA #IMPLIED
         timeZone CDATA #IMPLIED
@@ -229,52 +176,18 @@
 >
 
 <!-- caption -->
-<!ELEMENT caption (#PCDATA | attribute | custom-attributes | varaibles | audio | bandbox | box | button | calendar | chart |  checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT caption (#PCDATA | %anyGroup;)*>
 <!ATTLIST caption
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+        %labelImageElementAttrGroup;
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
         onDoubleClick CDATA #IMPLIED
 >
 
 <!-- chart -->
-<!ELEMENT chart (attribute | custom-attributes | variables)*>
+<!ELEMENT chart (%baseGroup;)*>
 <!ATTLIST chart
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         border CDATA #IMPLIED
         align (top|texttop|middle|absmiddle|bottom|absbottom|baseline|left|right|center) #IMPLIED
         hspace CDATA #IMPLIED
@@ -301,29 +214,11 @@
         onBookmarkChanged CDATA #IMPLIED
         onClientInfo CDATA #IMPLIED
 >
- 
+
 <!-- checkbox -->
-<!ELEMENT checkbox (attribute | custom-attributes | variables)*>
+<!ELEMENT checkbox (%baseGroup;)*>
 <!ATTLIST checkbox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED 
+        %labelImageElementAttrGroup;
         name CDATA #IMPLIED
         checked CDATA #IMPLIED
         disabled CDATA #IMPLIED
@@ -337,29 +232,9 @@
 >
 
 <!-- column -->
-<!ELEMENT column (attribute | custom-attributes | variables)*>
+<!ELEMENT column (%baseGroup;)*>
 <!ATTLIST column
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
-        align (left|right|center) #IMPLIED
-        valign (top|baseline|middle|bottom) #IMPLIED
+        %headerElementAttrGroup;
         sortDirection (natural|ascending|descending) #IMPLIED
         sortAscending CDATA #IMPLIED
         sortDescending CDATA #IMPLIED
@@ -370,55 +245,16 @@
 >
 
 <!-- columns -->
-<!ELEMENT columns (attribute | custom-attributes | variables | column)*>
+<!ELEMENT columns (%baseGroup; | column)*>
 <!ATTLIST columns
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         sizable CDATA #IMPLIED
 >
 
 <!-- combobox -->
-<!ELEMENT combobox (attribute | custom-attributes | variables | comboitem)*>
+<!ELEMENT combobox (%baseGroup; | comboitem)*>
 <!ATTLIST combobox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        name CDATA #IMPLIED
-        disabled CDATA #IMPLIED
-        readonly CDATA #IMPLIED
-        maxlength CDATA #IMPLIED
-        cols CDATA #IMPLIED
-        constraint CDATA #IMPLIED
-        tabindex CDATA #IMPLIED
+        %inputElementAttrGroup;
         autodrop CDATA #IMPLIED
         buttonVisible CDATA #IMPLIED
         value CDATA #IMPLIED
@@ -433,62 +269,20 @@
 >
 
 <!-- comboitem -->
-<!ELEMENT comboitem (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart |  checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT comboitem (#PCDATA | %anyGroup;)*>
 <!ATTLIST comboitem
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+        %labelImageElementAttrGroup;
         description CDATA #IMPLIED
         value CDATA #IMPLIED
 >
-        
+
 <!-- custom-attributes -->
 <!ELEMENT custom-attributes EMPTY>
 
 <!-- datebox -->
-<!ELEMENT datebox (attribute | custom-attributes | variables)*>
+<!ELEMENT datebox (%baseGroup;)*>
 <!ATTLIST datebox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        name CDATA #IMPLIED
-        disabled CDATA #IMPLIED
-        readonly CDATA #IMPLIED
-        maxlength CDATA #IMPLIED
-        cols CDATA #IMPLIED
-        constraint CDATA #IMPLIED
-        tabindex CDATA #IMPLIED
-        format CDATA #IMPLIED
+        %formatInputElementAttrGroup;
         value CDATA #IMPLIED
         lenient CDATA #IMPLIED
         compact CDATA #IMPLIED
@@ -502,33 +296,9 @@
 >
 
 <!-- decimalbox -->
-<!ELEMENT decimalbox (attribute | custom-attributes | variables)*>
+<!ELEMENT decimalbox (%baseGroup;)*>
 <!ATTLIST decimalbox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        name CDATA #IMPLIED
-        disabled CDATA #IMPLIED
-        readonly CDATA #IMPLIED
-        maxlength CDATA #IMPLIED
-        cols CDATA #IMPLIED
-        constraint CDATA #IMPLIED
-        tabindex CDATA #IMPLIED
-        format CDATA #IMPLIED
+        %formatInputElementAttrGroup;
         value CDATA #IMPLIED
         scale CDATA #IMPLIED
         onChange CDATA #IMPLIED
@@ -540,25 +310,9 @@
 >
 
 <!-- div -->
-<!ELEMENT div (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT div (#PCDATA | %anyGroup;)*>
 <!ATTLIST div
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         align (left|right|center|justify) #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
@@ -568,33 +322,9 @@
 >
 
 <!-- doublebox -->
-<!ELEMENT doublebox (attribute | custom-attributes | variables)*>
+<!ELEMENT doublebox (%baseGroup;)*>
 <!ATTLIST doublebox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        name CDATA #IMPLIED
-        disabled CDATA #IMPLIED
-        readonly CDATA #IMPLIED
-        maxlength CDATA #IMPLIED
-        cols CDATA #IMPLIED
-        constraint CDATA #IMPLIED
-        tabindex CDATA #IMPLIED
-        format CDATA #IMPLIED
+        %formatInputElementAttrGroup;
         value CDATA #IMPLIED
         onChange CDATA #IMPLIED
         onChanging CDATA #IMPLIED
@@ -605,49 +335,15 @@
 >
 
 <!-- foot -->
-<!ELEMENT foot (attribute | custom-attributes | variables | footer)*>
+<!ELEMENT foot (%baseGroup; | footer)*>
 <!ATTLIST foot
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
 >
 
 <!-- footer -->
-<!ELEMENT footer (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
-<!ATTLIST footer 
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+<!ELEMENT footer (#PCDATA | %anyGroup;)*>
+<!ATTLIST footer
+         %labelImageElementAttrGroup;
         span CDATA #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
@@ -656,25 +352,9 @@
 
 
 <!-- grid -->
-<!ELEMENT grid (attribute | custom-attributes | variables | columns | rows | foot)*>
+<!ELEMENT grid (%baseGroup; | columns | rows | foot)*>
 <!ATTLIST grid
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         align (left|right|center) #IMPLIED
         pageSize CDATA #IMPLIED
         paginal CDATA #IMPLIED
@@ -689,25 +369,9 @@
 <!--
   The children elements of groupbox here may not be equivalent to that in zul.xsd
 -->
-<!ELEMENT groupbox (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | caption)*>
+<!ELEMENT groupbox (#PCDATA | %anyGroup; | caption)*>
 <!ATTLIST groupbox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         open CDATA #IMPLIED
         closable CDATA #IMPLIED
         contentStyle CDATA #IMPLIED
@@ -720,25 +384,9 @@
 >
 
 <!-- hbox -->
-<!ELEMENT hbox (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | chart | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
+<!ELEMENT hbox (#PCDATA | %anyGroup; | splitter)*>
 <!ATTLIST hbox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         spacing CDATA #IMPLIED
         widths CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
@@ -747,50 +395,18 @@
 >
 
 <!-- html -->
-<!ELEMENT html (attribute | custom-attributes | variables)*>
+<!ELEMENT html (%baseGroup;)*>
 <!ATTLIST html
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         content CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
         onClientInfo CDATA #IMPLIED
 >
 
 <!-- iframe -->
-<!ELEMENT iframe (attribute | custom-attributes | variables)*>
+<!ELEMENT iframe (%baseGroup;)*>
 <!ATTLIST iframe
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         name CDATA #IMPLIED
         src CDATA #IMPLIED
         align (top|texttop|middle|absmiddle|bottom|absbottom|baseline|left|right|center) #IMPLIED
@@ -800,25 +416,9 @@
 >
 
 <!-- image -->
-<!ELEMENT image (attribute | custom-attributes | variables)*>
+<!ELEMENT image (%baseGroup;)*>
 <!ATTLIST image
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         border CDATA #IMPLIED
         src CDATA #IMPLIED
         align (top|texttop|middle|absmiddle|bottom|absbottom|baseline|left|right|center) #IMPLIED
@@ -832,25 +432,9 @@
 >
 
 <!-- imagemap -->
-<!ELEMENT imagemap (attribute | custom-attributes | variables | area)*>
+<!ELEMENT imagemap (%baseGroup; | area)*>
 <!ATTLIST imagemap
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         border CDATA #IMPLIED
         src CDATA #IMPLIED
         align (top|texttop|middle|absmiddle|bottom|absbottom|baseline|left|right|center) #IMPLIED
@@ -864,25 +448,9 @@
 >
 
 <!-- include -->
-<!ELEMENT include (attribute | custom-attributes | variables)*>
+<!ELEMENT include (%baseGroup;)*>
 <!ATTLIST include
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         src CDATA #IMPLIED
         localized CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
@@ -890,33 +458,9 @@
 >
 
 <!-- intbox -->
-<!ELEMENT intbox (attribute | custom-attributes | variables)*>
+<!ELEMENT intbox (%baseGroup;)*>
 <!ATTLIST intbox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        name CDATA #IMPLIED
-        disabled CDATA #IMPLIED
-        readonly CDATA #IMPLIED
-        maxlength CDATA #IMPLIED
-        cols CDATA #IMPLIED
-        constraint CDATA #IMPLIED
-        tabindex CDATA #IMPLIED
-        format CDATA #IMPLIED
+         %formatInputElementAttrGroup;
         value CDATA #IMPLIED
         onChange CDATA #IMPLIED
         onChanging CDATA #IMPLIED
@@ -927,25 +471,9 @@
 >
 
 <!-- label -->
-<!ELEMENT label (attribute | custom-attributes | variables)*>
+<!ELEMENT label (%baseGroup;)*>
 <!ATTLIST label
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         value CDATA #IMPLIED
         multiline CDATA #IMPLIED
         maxlength CDATA #IMPLIED
@@ -959,23 +487,7 @@
 <!-- listbox -->
 <!ELEMENT listbox ((attribute | custom-attributes | listitem)*,((listhead,(attribute | custom-attributes | listitem)*,(listfoot,(attribute | custom-attributes | listitem)*)?) | (listfoot,(attribute | custom-attributes | listitem)*,(listhead,(attribute | custom-attributes | listitem)*)?))?)>
 <!ATTLIST listbox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         checkmark CDATA #IMPLIED
         disabled CDATA #IMPLIED
         pageSize CDATA #IMPLIED
@@ -996,74 +508,22 @@
 >
 
 <!--listcell -->
-<!ELEMENT listcell (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT listcell (#PCDATA | %anyGroup; )*>
 <!ATTLIST listcell
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+        %labelImageElementAttrGroup;
         span CDATA #IMPLIED
 >
 
 <!-- listfoot -->
-<!ELEMENT listfoot (attribute | custom-attributes | variables | listfooter)*>
+<!ELEMENT listfoot (%baseGroup; | listfooter)*>
 <!ATTLIST listfoot
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
 >
 
 <!-- listfooter -->
-<!ELEMENT listfooter (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT listfooter (#PCDATA | %anyGroup; )*>
 <!ATTLIST listfooter
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+        %labelImageElementAttrGroup;
         span CDATA #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
@@ -1071,52 +531,16 @@
 >
 
 <!-- listhead -->
-<!ELEMENT listhead (attribute | custom-attributes | variables | listheader)*>
+<!ELEMENT listhead (%baseGroup; | listheader)*>
 <!ATTLIST listhead
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         sizable CDATA #IMPLIED
 >
 
 <!-- listheader -->
-<!ELEMENT listheader (attribute | custom-attributes | variables)*>
+<!ELEMENT listheader (%baseGroup;)*>
 <!ATTLIST listheader
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
-        align (left|right|center) #IMPLIED
-        valign (top|baseline|middle|bottom) #IMPLIED
+        %headerElementAttrGroup;
         sort (auto|none) #IMPLIED
         sortDirection (natural|ascending|descending) #IMPLIED
         sortAscending CDATA #IMPLIED
@@ -1129,75 +553,24 @@
 >
 
 <!-- listitem -->
-<!ELEMENT listitem (attribute | custom-attributes | variables | listcell)*>
+<!ELEMENT listitem (%baseGroup; | listcell)*>
 <!ATTLIST listitem
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
+        %labelElementAttrGroup;
         value CDATA #IMPLIED
         disabled CDATA #IMPLIED
         selected CDATA #IMPLIED
 >
 
 <!-- menu -->
-<!ELEMENT menu ((attribute | custom-attributes | variables)*,(menupopup,(attribute | custom-attributes | variables)*)?)>
+<!ELEMENT menu ((%baseGroup;)*,(menupopup,(%baseGroup;)*)?)>
 <!ATTLIST menu
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+         %labelImageElementAttrGroup;
 >
 
 <!-- menubar -->
-<!ELEMENT menubar (attribute | custom-attributes | variables | menu)*>
+<!ELEMENT menubar (%baseGroup; | menu)*>
 <!ATTLIST menubar
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+         %xulElementAttrGroup;
         orient (horizontal|vertical) #IMPLIED
         autodrop CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
@@ -1205,27 +578,9 @@
 >
 
 <!-- menuitem -->
-<!ELEMENT menuitem (attribute | custom-attributes | variables)*>
+<!ELEMENT menuitem (%baseGroup;)*>
 <!ATTLIST menuitem
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+        %labelImageElementAttrGroup;
         value CDATA #IMPLIED
         checked CDATA #IMPLIED
         autocheck CDATA #IMPLIED
@@ -1235,70 +590,22 @@
 >
 
 <!-- menupopup -->
-<!ELEMENT menupopup (attribute | custom-attributes | variables | menu | menuitem | menuseparator)*>
+<!ELEMENT menupopup (%baseGroup; | menu | menuitem | menuseparator)*>
 <!ATTLIST menupopup
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         onOpen CDATA #IMPLIED
 >
 
 <!-- menuseparator -->
-<!ELEMENT menuseparator (attribute | custom-attributes | variables)*>
+<!ELEMENT menuseparator (%baseGroup;)*>
 <!ATTLIST menuseparator
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
 >
 
 <!-- paging -->
-<!ELEMENT paging (attribute | custom-attributes | variables)*>
+<!ELEMENT paging (%baseGroup;)*>
 <!ATTLIST paging
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         pageSize CDATA #IMPLIED
         totalSize CDATA #IMPLIED
         activePage CDATA #IMPLIED
@@ -1308,75 +615,25 @@
 >
 
 <!-- popup -->
-<!ELEMENT popup (attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | menu | menuitem | menuseparator)*>
+<!ELEMENT popup (%anyGroup; | menu | menuitem | menuseparator)*>
 <!ATTLIST popup
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         onOpen CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
         onClientInfo CDATA #IMPLIED
 >
 
 <!-- progressmeter -->
-<!ELEMENT progressmeter (attribute | custom-attributes | variables)*>
+<!ELEMENT progressmeter (%baseGroup;)*>
 <!ATTLIST progressmeter
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+         %xulElementAttrGroup;
         value CDATA #IMPLIED
 >
 
 <!-- radio -->
-<!ELEMENT radio (attribute | custom-attributes | variables)*>
+<!ELEMENT radio (%baseGroup;)*>
 <!ATTLIST radio
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+        %labelImageElementAttrGroup;
         selected CDATA #IMPLIED
         checked CDATA #IMPLIED
         disabled CDATA #IMPLIED
@@ -1389,25 +646,9 @@
 >
 
 <!-- radiogroup -->
-<!ELEMENT radiogroup (attribute | custom-attributes | variables | radio)*>
+<!ELEMENT radiogroup (%baseGroup; | radio)*>
 <!ATTLIST radiogroup
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         name CDATA #IMPLIED
         orient (horizontal|vertical) #IMPLIED
         onCheck CDATA #IMPLIED
@@ -1416,25 +657,9 @@
 >
 
 <!-- row -->
-<!ELEMENT row (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
+<!ELEMENT row (#PCDATA | %anyGroup;)*>
 <!ATTLIST row
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         align (left|right|center) #IMPLIED
         nowrap CDATA #IMPLIED
         spans CDATA #IMPLIED
@@ -1443,29 +668,13 @@
 >
 
 <!-- rows -->
-<!ELEMENT rows (attribute | custom-attributes | variables | row)*>
+<!ELEMENT rows (%baseGroup; | row)*>
 <!ATTLIST rows
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
 >
 
 <!-- script -->
-<!ELEMENT script (#PCDATA | attribute | custom-attributes | variables)*>
+<!ELEMENT script (#PCDATA | %baseGroup;)*>
 <!ATTLIST script
         %abstractComponentAttrGroup;
         src CDATA #IMPLIED
@@ -1475,25 +684,9 @@
 >
 
 <!-- separator -->
-<!ELEMENT separator (attribute | custom-attributes | variables)*>
+<!ELEMENT separator (%baseGroup;)*>
 <!ATTLIST separator
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         spacing CDATA #IMPLIED
         orient (horizontal|vertical) #IMPLIED
         bar CDATA #IMPLIED
@@ -1502,25 +695,9 @@
 >
 
 <!-- slider -->
-<!ELEMENT slider (attribute | custom-attributes | variables)*>
+<!ELEMENT slider (%baseGroup;)*>
 <!ATTLIST slider
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         curpos CDATA #IMPLIED
         maxpos CDATA #IMPLIED
         pageIncrement CDATA #IMPLIED
@@ -1532,25 +709,9 @@
 >
 
 <!-- space -->
-<!ELEMENT space (attribute | custom-attributes | variables)*>
+<!ELEMENT space (%baseGroup;)*>
 <!ATTLIST space
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         spacing CDATA #IMPLIED
         orient (horizontal|vertical) #IMPLIED
         bar CDATA #IMPLIED
@@ -1559,59 +720,25 @@
 >
 
 <!-- splitter -->
-<!ELEMENT splitter (attribute | custom-attributes | variables)*>
+<!ELEMENT splitter (%baseGroup;)*>
 <!ATTLIST splitter
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         collapse (after|before) #IMPLIED
         open CDATA #IMPLIED
         onOpen CDATA #IMPLIED
 >
 
 <!-- style -->
-<!ELEMENT style (#PCDATA | attribute | custom-attributes | variables)*>
+<!ELEMENT style (#PCDATA | %baseGroup;)*>
 <!ATTLIST style
         %abstractComponentAttrGroup;
         src CDATA #IMPLIED
 >
 
 <!-- tab -->
-<!ELEMENT tab (attribute | custom-attributes | variables)*>
+<!ELEMENT tab (%baseGroup;)*>
 <!ATTLIST tab
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+        %labelImageElementAttrGroup;
         selected CDATA #IMPLIED
         closable CDATA #IMPLIED
         onClose CDATA #IMPLIED
@@ -1620,25 +747,9 @@
 >
 
 <!-- tabbox -->
-<!ELEMENT tabbox (attribute | custom-attributes | variables | tabs | tabpanels)*>
+<!ELEMENT tabbox (%baseGroup; | tabs | tabpanels)*>
 <!ATTLIST tabbox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         panelSpacing CDATA #IMPLIED
         selectedIndex CDATA #IMPLIED
         orient (horizontal|vertical) #IMPLIED
@@ -1649,101 +760,30 @@
 >
 
 <!-- tabpanel -->
-<!ELEMENT tabpanel (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript )*>
+<!ELEMENT tabpanel (#PCDATA | %anyGroup; )*>
 <!ATTLIST tabpanel
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
         onDoubleClick CDATA #IMPLIED
 >
 
 <!-- tabpanels -->
-<!ELEMENT tabpanels (attribute | custom-attributes | variables | tabpanel)*>
+<!ELEMENT tabpanels (%baseGroup; | tabpanel)*>
 <!ATTLIST tabpanels
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
 >
 
 <!-- tabs -->
-<!ELEMENT tabs (attribute | custom-attributes | variables | tab)*>
+<!ELEMENT tabs (%baseGroup; | tab)*>
 <!ATTLIST tabs
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
 >
 
 <!-- textbox -->
-<!ELEMENT textbox (attribute | custom-attributes | variables)*>
+<!ELEMENT textbox (%baseGroup;)*>
 <!ATTLIST textbox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        name CDATA #IMPLIED
-        disabled CDATA #IMPLIED
-        readonly CDATA #IMPLIED
-        maxlength CDATA #IMPLIED
-        cols CDATA #IMPLIED
-        constraint CDATA #IMPLIED
-        tabindex CDATA #IMPLIED
+        %inputElementAttrGroup;
         value CDATA #IMPLIED
         type (text|password) #IMPLIED
         rows CDATA #IMPLIED
@@ -1757,25 +797,9 @@
 >
 
 <!-- timer -->
-<!ELEMENT timer (attribute | custom-attributes | variables)*>
+<!ELEMENT timer (%baseGroup;)*>
 <!ATTLIST timer
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+         %xulElementAttrGroup;
         delay CDATA #IMPLIED
         repeats CDATA #IMPLIED
         running CDATA #IMPLIED
@@ -1785,25 +809,9 @@
 >
 
 <!-- toolbar -->
-<!ELEMENT toolbar (attribute | custom-attributes | variables | toolbarbutton | button | image)*>
+<!ELEMENT toolbar (%baseGroup; | toolbarbutton | button | image)*>
 <!ATTLIST toolbar
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         orient (horizontal|vertical) #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
@@ -1813,27 +821,9 @@
 >
 
 <!-- toolbarbutton -->
-<!ELEMENT toolbarbutton (attribute | custom-attributes | variables)*>
+<!ELEMENT toolbarbutton (%baseGroup;)*>
 <!ATTLIST toolbarbutton
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+         %labelImageElementAttrGroup;
         orient (horizontal|vertical) #IMPLIED
         dir (normal|reverse) #IMPLIED
         href CDATA #IMPLIED
@@ -1848,25 +838,9 @@
 >
 
 <!-- tree -->
-<!ELEMENT tree (attribute | custom-attributes | variables | treechildren | treecols | treefoot)*>
+<!ELEMENT tree (%baseGroup; | treechildren | treecols | treefoot)*>
 <!ATTLIST tree
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         rows CDATA #IMPLIED
         name CDATA #IMPLIED
         checkmark CDATA #IMPLIED
@@ -1878,76 +852,22 @@
 >
 
 <!-- treecell -->
-<!ELEMENT treecell (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
+<!ELEMENT treecell (#PCDATA | %anyGroup;)*>
 <!ATTLIST treecell
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+        %labelImageElementAttrGroup;
         span CDATA #IMPLIED
 >
 
 <!-- treechildren -->
-<!ELEMENT treechildren (attribute | custom-attributes | variables | treeitem)*>
-<!ATTLIST treechildren 
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+<!ELEMENT treechildren (%baseGroup; | treeitem)*>
+<!ATTLIST treechildren
+        %xulElementAttrGroup;
 >
 
 <!-- treecol -->
-<!ELEMENT treecol (attribute | custom-attributes | variables)*>
+<!ELEMENT treecol (%baseGroup;)*>
 <!ATTLIST treecol
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
-        align (left|right|center) #IMPLIED
-        valign (top|baseline|middle|bottom) #IMPLIED
+        %headerElementAttrGroup;
         maxlength CDATA #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
@@ -1955,72 +875,22 @@
 >
 
 <!-- treecols -->
-<!ELEMENT treecols (attribute | custom-attributes | variables | treecol)*>
+<!ELEMENT treecols (%baseGroup; | treecol)*>
 <!ATTLIST treecols
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         sizable CDATA #IMPLIED
 >
 
 <!-- treefoot -->
-<!ELEMENT treefoot (attribute | custom-attributes | variables | treefooter)*>
+<!ELEMENT treefoot (%baseGroup; | treefooter)*>
 <!ATTLIST treefoot
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+         %xulElementAttrGroup;
 >
 
 <!-- treefooter -->
-<!ELEMENT treefooter (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
+<!ELEMENT treefooter (#PCDATA | %anyGroup;)*>
 <!ATTLIST treefooter
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
-        label CDATA #IMPLIED
-        image CDATA #IMPLIED
+        %labelImageElementAttrGroup;
         span CDATA #IMPLIED
         onClick CDATA #IMPLIED
         onRightClick CDATA #IMPLIED
@@ -2029,25 +899,9 @@
 
 
 <!-- treeitem -->
-<!ELEMENT treeitem ((attribute | custom-attributes | variables)*,((treerow,(attribute | custom-attributes | variables)*,(treechildren,(attribute | custom-attributes | variables)*)?) | (treechildren,(attribute | custom-attributes | variables)*,(treerow,(attribute | custom-attributes | variables)*)?))?)>
+<!ELEMENT treeitem ((%baseGroup;)*,((treerow,(%baseGroup;)*,(treechildren,(%baseGroup;)*)?) | (treechildren,(%baseGroup;)*,(treerow,(%baseGroup;)*)?))?)>
 <!ATTLIST treeitem
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         value CDATA #IMPLIED
         open CDATA #IMPLIED
         selected CDATA #IMPLIED
@@ -2056,50 +910,18 @@
 >
 
 <!-- treerow -->
-<!ELEMENT treerow (attribute | custom-attributes | variables | treecell)*>
+<!ELEMENT treerow (%baseGroup; | treecell)*>
 <!ATTLIST treerow
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
 >
 
 <!-- variables -->
 <!ELEMENT variables EMPTY>
 
 <!-- vbox -->
-<!ELEMENT vbox (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | splitter)*>
+<!ELEMENT vbox (#PCDATA | %anyGroup; | splitter)*>
 <!ATTLIST vbox
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         spacing CDATA #IMPLIED
         heights CDATA #IMPLIED
         onBookmarkChanged CDATA #IMPLIED
@@ -2108,31 +930,12 @@
 >
 
 <!-- window -->
-<!--
-  The children elements of window here may not be equivalent to that in zul.xsd
--->
-<!ELEMENT window (#PCDATA | attribute | custom-attributes | audio | bandbox | box | button | calendar | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript | caption)*>
+<!ELEMENT window (#PCDATA | %anyGroup; | caption )*>
 <!ATTLIST window
-        %abstractComponentAttrGroup;
-        width CDATA #IMPLIED
-        height CDATA #IMPLIED
-        sclass CDATA #IMPLIED
-        style CDATA #IMPLIED
-        left CDATA #IMPLIED
-        top CDATA #IMPLIED
-        draggable CDATA #IMPLIED
-        droppable CDATA #IMPLIED
-        tooltiptext CDATA #IMPLIED
-        zindex CDATA #IMPLIED
-        onCreate CDATA #IMPLIED
-        onDrop CDATA #IMPLIED
-        action CDATA #IMPLIED
-        context CDATA #IMPLIED
-        popup CDATA #IMPLIED
-        tooltip CDATA #IMPLIED
+        %xulElementAttrGroup;
         border CDATA #IMPLIED
         title CDATA #IMPLIED
-        ctrlKeys CDATA #IMPLIED 
+        ctrlKeys CDATA #IMPLIED
         mode (embedded|modal|overlapped|popup) #IMPLIED
         closable CDATA #IMPLIED
         sizable CDATA #IMPLIED
@@ -2153,7 +956,7 @@
 >
 
 <!-- zk -->
-<!ELEMENT zk (#PCDATA | attribute | custom-attributes | variables | audio | bandbox | box | button | calendar | chart | checkbox | combobox | datebox | decimalbox | div | doublebox | grid | groupbox | hbox | html | iframe | image | imagemap | include | intbox | label | listbox | menubar | menupopup | paging | popup | radiogroup | separator | slider | space | style | tabbox | textbox | timer | toolbar | toolbarbutton | tree | vbox | window | zk | zscript)*>
+<!ELEMENT zk (#PCDATA | %anyGroup; | area | bandpopup | caption | columns | column | comboitem | foot | footer | listcell | listfoot | listfooter | listhead | listheader | listitem | menu | menuitem | menuseparator | rows | row | splitter | tab | tabpanel | tabpanels | tabs | treecell | treechildren | treecol | treecols | treefoot | treefooter | treeitem | treerow)*>
 <!ATTLIST zk
         %zkAttrGroup;
 >
