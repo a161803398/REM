@@ -1,0 +1,28 @@
+------------
+REM 1.1.0
+
+*Update to ZK 2.3.0
+    + Use ZK 2.3.0 libraries and Javadocs
+    + Modify code completion feature, so new elements such as "variables" are added  
+
+------------
+REM 1.0.0 
+
+* Support ZK 2.2.0 (www.zkoss.org)
+
+* Create ZK web application 
+	+ Generate the right web.xml for ZK 2.2.0
+	+ Add all necessary ZK libraries
+
+* Create ZUL and ZS documents
+
+* Support ZUL file editing
+	+ Syntax highlighting
+	+ Auto indent
+	+ Code folding
+	+ Code completion
+	+ Code hyperlink navigation
+
+* Support ZS file editing
+	+ Syntax highlighting
+
