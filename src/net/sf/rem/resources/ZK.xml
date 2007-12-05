@@ -31,7 +31,12 @@
     </volume>
     <volume>
         <type>src</type>
-        
+        <resource>jar:nbinst://net.sf.rem/src/zcommon-sources.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/src/zhtml-sources.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/src/zk-sources.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/src/zkplus-sources.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/src/zul-sources.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/src/zweb-sources.jar!/</resource>
     </volume>
     <volume>
         <type>javadoc</type>
