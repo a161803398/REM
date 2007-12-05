@@ -6,6 +6,7 @@
     <localizing-bundle>net.sf.rem.resources.Bundle</localizing-bundle>
     <volume>
         <type>classpath</type>
+        <resource>jar:nbinst://net.sf.rem/libs/Filters.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/asm.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/bsh.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/commons-el.jar!/</resource>
