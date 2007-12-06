@@ -1,4 +1,12 @@
 ------------
+REM 1.2.0
+
+* Updated to ZK 2.4.1
+   + Use ZK 2.4.1 libraries and Javadocs
+   + Add ZK 2.4.1 source jars
+   + Updated code completion to match ZK 2.4.1's XML schema.
+
+------------
 REM 1.1.0
 
 *Update to ZK 2.3.0
