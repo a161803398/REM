@@ -10,9 +10,9 @@
         <delete dir="${basedir}/dist"/>
     </target>
     
-    <target name="dist" depends="netbeans">
+    <target name="dist" depends="clean,nbm">
         <mkdir dir="${basedir}/dist"/>
-        <zip destfile="${basedir}/dist/REM-NB5-1.2.1.zip">
+        <zip destfile="${basedir}/dist/REM-NB55-1.2.1.zip">
             <zipfileset dir="build" includes="${code.name.base.dashes}.nbm" fullpath="${code.name.base.dashes}.nbm"/>
             <zipfileset dir="doc" includes="release-note" fullpath="release-note"/>
         </zip>
