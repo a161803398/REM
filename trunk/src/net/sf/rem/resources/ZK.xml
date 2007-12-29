@@ -21,11 +21,17 @@
         <resource>jar:nbinst://net.sf.rem/libs/jruby.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/js.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/json_simple.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/mvel.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/ognl.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/timelinez.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/zcommon.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/zcommons-el.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/zhtml.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/zk.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/zkex.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/zkmax.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/zkplus.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/libs/zml.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/zul.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/libs/zweb.jar!/</resource>
     </volume>
@@ -34,7 +40,10 @@
         <resource>jar:nbinst://net.sf.rem/src/zcommon-sources.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/src/zhtml-sources.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/src/zk-sources.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/src/zkex-sources.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/src/zkmax-sources.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/src/zkplus-sources.jar!/</resource>
+        <resource>jar:nbinst://net.sf.rem/src/zml-sources.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/src/zul-sources.jar!/</resource>
         <resource>jar:nbinst://net.sf.rem/src/zweb-sources.jar!/</resource>
     </volume>
@@ -43,7 +52,10 @@
         <resource>jar:nbinst://net.sf.rem/docs/zcommon.zip!/</resource>
         <resource>jar:nbinst://net.sf.rem/docs/zhtml.zip!/</resource>
         <resource>jar:nbinst://net.sf.rem/docs/zk.zip!/</resource>
+        <resource>jar:nbinst://net.sf.rem/docs/zkex.zip!/</resource>
+        <resource>jar:nbinst://net.sf.rem/docs/zkmax.zip!/</resource>
         <resource>jar:nbinst://net.sf.rem/docs/zkplus.zip!/</resource>
+        <resource>jar:nbinst://net.sf.rem/docs/zml.zip!/</resource>
         <resource>jar:nbinst://net.sf.rem/docs/zul.zip!/</resource>
         <resource>jar:nbinst://net.sf.rem/docs/zweb.zip!/</resource>
     </volume>
