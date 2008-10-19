@@ -19,10 +19,10 @@ import org.netbeans.editor.BaseDocument;
 import org.netbeans.editor.TokenItem;
 import org.netbeans.editor.Utilities;
 import org.netbeans.editor.ext.ExtSyntaxSupport;
-import org.netbeans.jmi.javamodel.JavaClass;
+//import org.netbeans.jmi.javamodel.JavaClass;
 import org.netbeans.lib.editor.hyperlink.spi.HyperlinkProvider;
 import org.netbeans.modules.editor.NbEditorUtilities;
-import org.netbeans.modules.editor.java.JMIUtils;
+//import org.netbeans.modules.editor.java.Utilities;
 import org.netbeans.modules.web.api.webmodule.WebModule;
 import org.openide.ErrorManager;
 import org.openide.cookies.OpenCookie;
@@ -231,20 +231,21 @@ public class ZulHyperlinkProvider implements HyperlinkProvider {
         }
         
         public void run() {
-            JMIUtils jmiUtils = JMIUtils.get(doc);
-            JavaClass item = null;
-            jmiUtils.beginTrans(false);
+          //  Utilities.getDocument(doc);
+          //  JMIUtils jmiUtils = JMIUtils.get(doc);
+         //   JavaClass item = null;
+         //   jmiUtils.beginTrans(false);
             try {
-                item = jmiUtils.getExactClass(fqn);
-                if (item != null) {
-                    jmiUtils.openElement(item);
-                } else {
+           //     item = jmiUtils.getExactClass(fqn);
+           //     if (item != null) {
+           //        jmiUtils.openElement(item);
+            //    } else {
                     String key = "goto_source_not_found"; // NOI18N
                     String msg = NbBundle.getBundle(ZulHyperlinkProvider.class).getString(key);
                     org.openide.awt.StatusDisplayer.getDefault().setStatusText(MessageFormat.format(msg, new Object [] { fqn } ));
-                }
+            //    }
             } finally {
-                jmiUtils.endTrans(false);
+            //    jmiUtils.endTrans(false);
             }
         }
     }

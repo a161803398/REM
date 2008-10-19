@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+                Sun Public License Notice
+
+The contents of this file are subject to the Sun Public License
+Version 1.0 (the "License"). You may not use this file except in
+compliance with the License. A copy of the License is available at
+http://www.sun.com/
+
+The Original Code is NetBeans. The Initial Developer of the Original
+Code is Sun Microsystems, Inc. Portions Copyright 1997-2005 Sun
+Microsystems, Inc. All Rights Reserved.
+-->
+<!DOCTYPE editor_palette_item PUBLIC "-//NetBeans//Editor Palette Item 1.1//EN" "http://www.netbeans.org/dtds/editor-palette-item-1_1.dtd">
+
+<editor_palette_item version="1.0">
+    <body>
+    <![CDATA[
+            <fisheyebar style="position:absolute;margin:20px;"
+	    		attachEdge="top">
+	    		<fisheye image="/img/icon_browser.png" label="Web Browser"
+	    			onClick="alert(self.label)" />
+	    		<fisheye image="/img/icon_calendar.png" label="Calendar"
+	    			onClick="alert(self.label)" />
+	    		
+	</fisheyebar>
+    ]]>
+    </body>
+
+    <icon16 urlvalue="net/sf/rem/resources/Zkpalette/fisheye.png" />
+    <icon32 urlvalue="net/sf/rem/resources/Zkpalette/fisheye.png" />
+    <inline-description>
+       <display-name>Fisheyebar</display-name>
+       <tooltip><![CDATA[<fisheyebar/>]]></tooltip>
+    </inline-description>
+</editor_palette_item>

@@ -1,8 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
 <filesystem>
-    <folder name="Loaders">
-        <folder name="text">
+     <folder name="Editors">
+          <folder name="text">
+            
+            <folder name="x-zul">
+                <file name="PaletteFactory.instance">
+                    <attr name="instanceOf" stringvalue="org.netbeans.spi.palette.PaletteController"/>
+                    <attr name="instanceCreate" methodvalue="net.sf.rem.editor.ZKpalette.ZKPaletteFactory.createPalette"/>
+                </file>
+            </folder>
+            
+            <folder name="x-zul+xml">
+                <file name="PaletteFactory.instance">
+                    <attr name="instanceOf" stringvalue="org.netbeans.spi.palette.PaletteController"/>
+                    <attr name="instanceCreate" methodvalue="net.sf.rem.editor.ZKpalette.ZKPaletteFactory.createPalette"/>
+                </file>
+            </folder>
+            
+              <folder name="x-zul+xml">
+                <folder name="Popup"> 
+                    <file name="net-sf-rem-editor-ZulPopupAction.instance">
+                    </file>
+                    <attr name="net-sf-rem-editor-ZulPopupAction.instance/Separator0.instance" boolvalue="true"/>
+                    <file name="Separator0.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="Separator0.instance/org-netbeans-modules-xml-text-syntax-XMLViewActions.instance" boolvalue="true"/>
+                </folder>
+            </folder>
+            
+            
+            
+            <folder name="x-zs">
+                <file name="EditorKit.instance">
+                    <attr name="instanceClass" stringvalue="org.netbeans.modules.editor.java.JavaKit"/>
+                </file>
+            </folder>
+           
+        </folder>
+        
+         <folder name="xml">
+            
+            <folder name="x-zul">
+                <file name="PaletteFactory.instance">
+                    <attr name="instanceOf" stringvalue="org.netbeans.spi.palette.PaletteController"/>
+                    <attr name="instanceCreate" methodvalue="net.sf.rem.editor.ZKpalette.ZKPaletteFactory.createPalette"/>
+                </file>
+            </folder>
+            
+           <folder name="x-zul+xml">
+                <file name="PaletteFactory.instance">
+                    <attr name="instanceOf" stringvalue="org.netbeans.spi.palette.PaletteController"/>
+                    <attr name="instanceCreate" methodvalue="net.sf.rem.editor.ZKpalette.ZKPaletteFactory.createPalette"/>
+                </file>
+            </folder>
+            
+        </folder>
+         
+       <!--    <folder name="x-zul+xml">
+                <file name="PaletteFactory.instance">
+                    <attr name="instanceOf" stringvalue="org.netbeans.spi.palette.PaletteController"/>
+                    <attr name="instanceCreate" methodvalue="net.sf.rem.editor.ZKpalette.ZKPaletteFactory.createPalette"/>
+                </file>
+              
+                <folder name="Popup"> 
+                    <file name="net-sf-rem-editor-ZulPopupAction.instance">
+                    </file>
+                    <attr name="net-sf-rem-editor-ZulPopupAction.instance/Separator0.instance" boolvalue="true"/>
+                    <file name="Separator0.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="Separator0.instance/org-netbeans-modules-xml-text-syntax-XMLViewActions.instance" boolvalue="true"/>
+                </folder>
+            </folder>   -->
+            
+            
+            
+         
             <folder name="x-zs">
                 <folder name="Actions">
                     <file name="org-openide-actions-OpenAction.instance"/>
@@ -77,8 +152,97 @@
                     <file name="org-openide-actions-PropertiesAction.instance"/>
                 </folder>
             </folder>
+   
+            
+           <!-- <folder name="x-zul">
+                <file name="PaletteFactory.instance">
+                    <attr name="instanceOf" stringvalue="org.netbeans.spi.palette.PaletteController"/>
+                    <attr name="instanceCreate" methodvalue="net.sf.rem.editor.ZKpalette.ZKPaletteFactory.createPalette"/>
+                </file>
+              
+            </folder>  -->
+            
+           
+        </folder>
+   
+    <folder name="JSPPalette">
+        
+        <folder name="ZK Basic">
+           <file name="Button.xml" url="Zkpalette/Button.xml"/>
+            <file name="Caption.xml" url="Zkpalette/Caption.xml"/>
+            <file name="Separator.xml" url="Zkpalette/Separator.xml"/>
+            <file name="Label.xml" url="Zkpalette/Label.xml"/>
+            <file name="Splitter.xml" url="Zkpalette/Splitter.xml"/>
+            <file name="Image.xml" url="Zkpalette/Image.xml"/>
+        </folder>
+        
+        
+        <folder name="ZK Inputs">
+        <file name="Textbox.xml" url="Zkpalette/Textbox.xml"/>
+         <file name="Checkbox.xml" url="Zkpalette/Checkbox.xml"/>
+            <file name="Datebox.xml" url="Zkpalette/Datebox.xml"/>
+            <file name="Rows.xml" url="Zkpalette/Rows.xml"/>
+            <file name="Listbox.xml" url="Zkpalette/Listbox.xml"/>
+            <file name="Radiogroup.xml" url="Zkpalette/Radiogroup.xml"/>
+            
+            <file name="Combobox.xml" url="Zkpalette/Combobox.xml"/>
+            <file name="Slider.xml" url="Zkpalette/Slider.xml"/>
+            <file name="Progressmeter.xml" url="Zkpalette/Progressmeter.xml"/>
+            <file name="Modaldialog.xml" url="Zkpalette/Modaldialog.xml"/>
+            <file name="Messagebox.xml" url="Zkpalette/Messagebox.xml"/>
+            <file name="Filedownload.xml" url="Zkpalette/Filedownload.xml"/>
+            <file name="Fileupload.xml" url="Zkpalette/Fileupload.xml"/>
+            
+            
+            <file name="Groupbox.xml" url="Zkpalette/Groupbox.xml"/>
+            <file name="Toolbar.xml" url="Zkpalette/Toolbar.xml"/> 
+            <file name="Menubar.xml" url="Zkpalette/Menubar.xml"/>
+            <file name="Fisheyebar.xml" url="Zkpalette/Fisheyebar.xml"/>
+            
+            <file name="Captcha.xml" url="Zkpalette/Captcha.xml"/>
+            <file name="Timer.xml" url="Zkpalette/Timer.xml"/>
+            
+           
+            <file name="Fckeditor.xml" url="Zkpalette/Fckeditor.xml"/>
+            
+           
+        </folder>
+        
+        <folder name="ZK containers">
+             <file name="Window.xml" url="Zkpalette/Window.xml"/>
+           <file name="Iframe.xml" url="Zkpalette/Iframe.xml"/>    
+        </folder>
+        
+        <folder name="ZK LayOut">
+           <file name="Borderlayout.xml" url="Zkpalette/Borderlayout.xml"/>
+            <file name="Columnlayout.xml" url="Zkpalette/Columnlayout.xml"/>
+            <file name="Hbox.xml" url="Zkpalette/Hbox.xml"/>
+            <file name="Vbox.xml" url="Zkpalette/Vbox.xml"/>
+        </folder>
+        
+         
+        
+        <folder name="ZK Tree">
+           <file name="Tree.xml" url="Zkpalette/Tree.xml"/>
+        </folder>
+        
+             <folder name="ZK Directive">
+          <file name="Include.xml" url="Zkpalette/Include.xml"/>
+        </folder>
+        
+        
+    </folder>
+    
+    
+      <folder name="Menu">
+        <folder name="Tools">
+            <folder name="PaletteManager">
+                <file name="net-sf-rem-editor-ZKwebxml-palette-zkddPaletteCustomizerAction.instance"/>
+            </folder>
         </folder>
     </folder>
+    
+  
     <folder name="Services">
         <folder name="MIMEResolver">
             <file name="ZsResolver.xml" url="ZsResolver.xml">
@@ -89,6 +253,9 @@
             </file>
         </folder>
     </folder>
+    
+    
+    
     <folder name="Templates">
         <folder name="JSP_Servlet">
             <file name="ZulTemplate.zul" url="ZulTemplate.zul">
@@ -124,7 +291,7 @@
             </folder> <!-- GrammarQueryManagers -->
         </folder>
     </folder>
-    
+    <!--
     <folder name="Editors">
         <folder name="text">
             <folder name="xml">
@@ -136,27 +303,10 @@
                 </folder>
             </folder>
             
-            <folder name="x-zul+xml">
-                <folder name="Popup"> 
-                    <file name="net-sf-rem-editor-ZulPopupAction.instance">
-                    </file>
-                    <attr name="net-sf-rem-editor-ZulPopupAction.instance/Separator0.instance" boolvalue="true"/>
-                    <file name="Separator0.instance">
-                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
-                    </file>
-                    <attr name="Separator0.instance/org-netbeans-modules-xml-text-syntax-XMLViewActions.instance" boolvalue="true"/>
-                </folder>
-            </folder>
-            
-            <!-- use editor features for java file -->
-            <folder name="x-zs">
-                <file name="EditorKit.instance">
-                    <attr name="instanceClass" stringvalue="org.netbeans.modules.editor.java.JavaKit"/>
-                </file>
-            </folder>
+          
         </folder>
     </folder>
-    
+    -->
     <folder name="Navigator">
         <folder name="Panels">
             <folder name="text">
@@ -170,7 +320,7 @@
     <folder name="j2ee">
         <folder name="webtier">
             <folder name="framework">
-                <file name="net-sf-rem-project-ZKFrameworkProvider.instance"/>
+                <file name="net-sf-rem-project-ZKWebFrameworkProvider.instance"/>
             </folder>
         </folder>
     </folder>

@@ -101,11 +101,14 @@ public class BrowseFolders extends javax.swing.JPanel implements ExplorerManager
              // Try to find the node
              for ( int i = 0; i < nodes.length; i++ ) {            
                 try { 
-                    sel = NodeOp.findPath( nodes[i], new java.util.StringTokenizer( preselectedFileName, "/" ) );
+               
+               sel =  NodeOp.findChild(sel, "");
+                    sel =  NodeOp.findChild( nodes[i], new java.util.StringTokenizer( preselectedFileName, "/" ).nextToken() );
                     break;
                 }
-                catch ( NodeNotFoundException e ) {
+                catch ( Exception e ) {
                     // Will select the first node
+                    e.printStackTrace();
                 }
              }
         }

@@ -10,6 +10,7 @@ import org.openide.util.Utilities;
 
 public class ZulDataLoaderBeanInfo extends SimpleBeanInfo {
     
+    @Override
     public BeanInfo[] getAdditionalBeanInfo() {
         try {
             return new BeanInfo[] {Introspector.getBeanInfo(UniFileLoader.class)};
@@ -18,12 +19,13 @@ public class ZulDataLoaderBeanInfo extends SimpleBeanInfo {
         }
     }
     
+    @Override
     public Image getIcon(int type) {
-        if (type == BeanInfo.ICON_COLOR_16x16 || type == BeanInfo.ICON_MONO_16x16) {
+     //   if (type == BeanInfo.ICON_COLOR_16x16 || type == BeanInfo.ICON_MONO_16x16) {
             return Utilities.loadImage("net/sf/rem/resources/zul.png");
-        } else {
-            return null;
-        }
+       // } else {
+         //   return null;
+       /// }
         
     }
     
