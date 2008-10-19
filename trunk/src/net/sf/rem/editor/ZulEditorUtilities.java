@@ -11,6 +11,7 @@ package net.sf.rem.editor;
 
 import javax.swing.text.BadLocationException;
 import org.netbeans.editor.BaseDocument;
+import org.netbeans.editor.Formatter;
 import org.openide.ErrorManager;
 
 /**
@@ -54,9 +55,16 @@ public class ZulEditorUtilities {
         int formatLength = 0;      
         try{
             doc.atomicLock();
-            offset = doc.getFormatter().indentLine(doc, offset);
+            System.out.println("text  "+text);
+             System.out.println("doc  "+doc);
+            System.out.println("offset  "+offset);
+            Formatter f=doc.getFormatter();
+           // if(f.expandTabs())
+            f.indentLock();
+           offset = f.indentLine(doc, offset);
+            System.out.println("offset  "+offset);
             doc.insertString(Math.min(offset, doc.getLength()), text, null );
-            formatLength = doc.getFormatter().reformat(doc, offset, offset + text.length());
+         //   formatLength = doc.getFormatter().reformat(doc, offset, offset + text.length());
         }
         finally{
             doc.atomicUnlock();
