@@ -14,27 +14,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.math.BigInteger;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.concurrent.CopyOnWriteArraySet;
 import javax.swing.JComponent;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import org.netbeans.api.project.FileOwnerQuery;
 import org.netbeans.api.project.Project;
 import org.netbeans.api.project.libraries.Library;
 import org.netbeans.api.project.libraries.LibraryManager;
 import org.netbeans.modules.j2ee.dd.api.common.InitParam;
-import org.netbeans.modules.j2ee.dd.api.common.NameAlreadyUsedException;
 import org.netbeans.modules.web.spi.webmodule.WebModuleExtender;
 import org.netbeans.spi.java.project.classpath.ProjectClassPathExtender;
 import org.openide.ErrorManager;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileSystem;
-import org.openide.util.Exceptions;
 import org.openide.util.HelpCtx;
 
 
@@ -51,14 +45,13 @@ import org.openide.DialogDescriptor;
 import org.openide.filesystems.FileLock;
 import org.openide.filesystems.FileUtil;
 import org.openide.filesystems.Repository;
-import org.openide.util.MapFormat;
 import org.openide.util.NbBundle;
 
 public class ZKWebModuleExtender extends WebModuleExtender {
 
     private ZKVisualPanel component;
-    private FileObject target;
     private final ZKWebFrameworkProvider framework;
+    private final Set<ChangeListener> listeners = new CopyOnWriteArraySet<ChangeListener>();
 
     public ZKWebModuleExtender(ZKWebFrameworkProvider framework) {
         this.framework = framework;
@@ -374,11 +367,20 @@ public class ZKWebModuleExtender extends WebModuleExtender {
     }
 
     @Override
-    public void addChangeListener(ChangeListener arg0) {
+    public void addChangeListener(ChangeListener listener) {
+        listeners.add(listener);
     }
 
     @Override
-    public void removeChangeListener(ChangeListener arg0) {
+    public void removeChangeListener(ChangeListener listener) {
+        listeners.remove(listener);
+    }
+    
+    protected final void fireChangeEvent() {
+        ChangeEvent event = new ChangeEvent(this);
+        for (ChangeListener listener : listeners) {
+            listener.stateChanged(event);
+        }
     }
 
     @Override

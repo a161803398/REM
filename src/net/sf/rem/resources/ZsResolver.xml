@@ -5,6 +5,5 @@
         <ext name="zs"/>
         <ext name="ZS"/>
         <resolver mime="text/x-zs"/>
-        
     </file>
 </MIME-resolver>

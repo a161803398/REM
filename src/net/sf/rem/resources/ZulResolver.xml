@@ -5,6 +5,5 @@
         <ext name="zul"/>
         <ext name="ZUL"/>
         <resolver mime="text/x-zul+xml"/>
-        
     </file>
 </MIME-resolver>
