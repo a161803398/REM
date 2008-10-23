@@ -1,10 +1,20 @@
 /*
- * ZulHyperlinkProvider.java
+ *   REM - A NetBeans Module for ZK
+ *   Copyright (C) 2006, 2007  Minjie Zha, Frederic Jean
  *
- * Created on March 18, 2007, 2:11 AM
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version.
  *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License along
+ *   with this program; if not, write to the Free Software Foundation, Inc.,
+ *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 package net.sf.rem.editor;
@@ -15,14 +25,13 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 import net.sf.rem.loaders.ZulDataObject;
+import org.netbeans.api.java.classpath.GlobalPathRegistry;
 import org.netbeans.editor.BaseDocument;
 import org.netbeans.editor.TokenItem;
 import org.netbeans.editor.Utilities;
 import org.netbeans.editor.ext.ExtSyntaxSupport;
-//import org.netbeans.jmi.javamodel.JavaClass;
 import org.netbeans.lib.editor.hyperlink.spi.HyperlinkProvider;
 import org.netbeans.modules.editor.NbEditorUtilities;
-//import org.netbeans.modules.editor.java.Utilities;
 import org.netbeans.modules.web.api.webmodule.WebModule;
 import org.openide.ErrorManager;
 import org.openide.cookies.OpenCookie;
@@ -38,13 +47,13 @@ import org.openide.util.RequestProcessor;
  * @author magic
  */
 public class ZulHyperlinkProvider implements HyperlinkProvider {
-    private static Hashtable<String,Integer> hyperlinkTable;
-    
+
+    private static Hashtable<String, Integer> hyperlinkTable;
     private final int JAVA_CLASS = 0;
     private final int RESOURCE_PATH = 2;
-    
+
     {
-        hyperlinkTable = new Hashtable<String,Integer>();
+        hyperlinkTable = new Hashtable<String, Integer>();
         hyperlinkTable.put("use", new Integer(JAVA_CLASS));
         hyperlinkTable.put("image", new Integer(RESOURCE_PATH));
         hyperlinkTable.put("src", new Integer(RESOURCE_PATH));
@@ -54,40 +63,45 @@ public class ZulHyperlinkProvider implements HyperlinkProvider {
         hyperlinkTable.put("zscript", new Integer(RESOURCE_PATH));
         hyperlinkTable.put("uri", new Integer(RESOURCE_PATH));
     }
-    
     private int valueOffset;
     private String[] av = null;
-    
+
     /** Creates a new instance of ZulHyperlinkProvider */
     public ZulHyperlinkProvider() {
     }
 
     public boolean isHyperlinkPoint(Document doc, int offset) {
         DataObject dObject = NbEditorUtilities.getDataObject(doc);
-        if (! (dObject instanceof ZulDataObject))
+        if (!(dObject instanceof ZulDataObject)) {
             return false;
-        
-        av = getAttrValue(doc, offset); 
-        if (av != null){ 
-            if (hyperlinkTable.get(av[0])!= null)
+        }
+
+        av = getAttrValue(doc, offset);
+        if (av != null) {
+            if (hyperlinkTable.get(av[0]) != null) {
                 return true;
+            }
         }
         return false;
     }
 
     public int[] getHyperlinkSpan(Document doc, int offset) {
-        if (av != null){
-            return new int []{valueOffset, valueOffset + av[1].length() -1};
+        if (av != null) {
+            return new int[]{valueOffset, valueOffset + av[1].length() - 1};
         }
         return null;
     }
 
     public void performClickAction(Document doc, int offset) {
-        if (hyperlinkTable.get(av[0])!= null){
-            int type = ((Integer)hyperlinkTable.get(av[0])).intValue();
-            switch (type){
-                case JAVA_CLASS: findJavaClass(av[1], doc); break;
-                case RESOURCE_PATH: findResourcePath(av[1], (BaseDocument)doc);break;
+        if (hyperlinkTable.get(av[0]) != null) {
+            int type = ((Integer) hyperlinkTable.get(av[0])).intValue();
+            switch (type) {
+                case JAVA_CLASS:
+                    findJavaClass(av[1], doc);
+                    break;
+                case RESOURCE_PATH:
+                    findResourcePath(av[1], (BaseDocument) doc);
+                    break;
             }
         }
     }
@@ -95,44 +109,51 @@ public class ZulHyperlinkProvider implements HyperlinkProvider {
     private String[] getAttrValue(Document doc, int offset) {
         String attribute = null;
         String value = null;
-        
+
         BaseDocument bdoc = (BaseDocument) doc;
         JTextComponent target = Utilities.getFocusedComponent();
-        
-        if(target == null || target.getDocument() != bdoc)
+
+        if (target == null || target.getDocument() != bdoc) {
             return null;
-        
-        ExtSyntaxSupport sup = (ExtSyntaxSupport)bdoc.getSyntaxSupport();
+        }
+
+        ExtSyntaxSupport sup = (ExtSyntaxSupport) bdoc.getSyntaxSupport();
         try {
-            TokenItem token = sup.getTokenChain(offset, offset+1);
-            
+            TokenItem token = sup.getTokenChain(offset, offset + 1);
+
             // For "macro-uri","class","zscript","uri","href" in PI
-            if(token != null && token.getTokenID().getNumericID() == ZulEditorUtilities.XML_PI_CONTENT){
-                
-                final String[] ATTRS = new String[] {
-                    "macro-uri",    // "macro-uri" in <?component ?>
-                    "class",        // "class" in <?component ?>, <?init ?> or <?variable-resolver ?>
-                    "zscript",      // "zscript" in <?init ?>
-                    "uri",          // "uri" in <?import ?>
-                    "href",         // "href" in <?link ?>
-                };
+            if (token != null && token.getTokenID().getNumericID() == ZulEditorUtilities.XML_PI_CONTENT) {
+
+                final String[] ATTRS = new String[]{
+                    "macro-uri", // "macro-uri" in <?component ?>
+                    "class", // "class" in <?component ?>, <?init ?> or <?variable-resolver ?>
+                    "zscript", // "zscript" in <?init ?>
+                    "uri", // "uri" in <?import ?>
+                    "href"
+                , // "href" in <?link ?>
+                   
+                      
+                      
+                      
+                      
+                      
+                   };
                 
                 String content = token.getImage().trim();
                 int index = -1;
-                for(String attr : ATTRS){
-                    if((index=content.indexOf(attr))>=0){
+                for (String attr : ATTRS) {
+                    if ((index = content.indexOf(attr)) >= 0) {
                         attribute = attr;
                         int startIndex = -1;
                         int endIndex = -1;
-                        if((startIndex=content.indexOf('"',index+1))>=0){
-                            valueOffset = token.getOffset()+startIndex+1;
-                            if((endIndex=content.indexOf('"',startIndex+1))>=0){
-                                if(startIndex<(offset-token.getOffset())
-                                && (offset-token.getOffset())<endIndex){
-                                    value = content.substring(startIndex+1,endIndex).trim();
+                        if ((startIndex = content.indexOf('"', index + 1)) >= 0) {
+                            valueOffset = token.getOffset() + startIndex + 1;
+                            if ((endIndex = content.indexOf('"', startIndex + 1)) >= 0) {
+                                if (startIndex < (offset - token.getOffset()) && (offset - token.getOffset()) < endIndex) {
+                                    value = content.substring(startIndex + 1, endIndex).trim();
                                     //System.out.println("attr:" + attribute);
                                     //System.out.println("value:" + value);
-                                    return new String[] {attribute,value};
+                                    return new String[]{attribute, value};
                                 }
                             }
                         }
@@ -140,38 +161,43 @@ public class ZulHyperlinkProvider implements HyperlinkProvider {
                 }
                 return null;
             }
-            
-            if(token == null || token.getTokenID().getNumericID() != ZulEditorUtilities.XML_ATTRIBUTE_VALUE)
+
+            if (token == null || token.getTokenID().getNumericID() != ZulEditorUtilities.XML_ATTRIBUTE_VALUE) {
                 return null;
-            
+            }
+
             // Find value
             value = token.getImage();
             //System.out.println("value:" + value);
-            if (value != null){
+            if (value != null) {
                 value = value.trim();
                 valueOffset = token.getOffset();
                 if (value.charAt(0) == '"') {
                     value = value.substring(1);
-                    valueOffset ++;
+                    valueOffset++;
                 }
-                
-                if (value.length() > 0  && value.charAt(value.length()-1) == '"') 
-                    value = value.substring(0, value.length()-1);
+
+                if (value.length() > 0 && value.charAt(value.length() - 1) == '"') {
+                    value = value.substring(0, value.length() - 1);
+                }
                 value = value.trim();
             }
-            
+
             // Find attribute
-            while(token != null && token.getTokenID().getNumericID() != ZulEditorUtilities.XML_ATTRIBUTE)
+            while (token != null && token.getTokenID().getNumericID() != ZulEditorUtilities.XML_ATTRIBUTE) {
                 token = token.getPrevious();
-            if(token != null && token.getTokenID().getNumericID() == ZulEditorUtilities.XML_ATTRIBUTE)
+            }
+            if (token != null && token.getTokenID().getNumericID() == ZulEditorUtilities.XML_ATTRIBUTE) {
                 attribute = token.getImage();
-            
-            if(attribute == null)
+            }
+
+            if (attribute == null) {
                 return null;
-            
+            }
+
             //System.out.println("attr:" + attribute);
             //System.out.println("value:" + value);
-            return new String[]{attribute,value};
+            return new String[]{attribute, value};
         } catch (BadLocationException ex) {
             ex.printStackTrace();
         }
@@ -179,74 +205,69 @@ public class ZulHyperlinkProvider implements HyperlinkProvider {
     }
 
     private void findJavaClass(String fqn, Document doc) {
-        OpenJavaClassThread run = new OpenJavaClassThread(fqn, (BaseDocument)doc);
+        OpenJavaClassThread run = new OpenJavaClassThread(fqn, (BaseDocument) doc);
         RequestProcessor.getDefault().post(run);
     }
 
     private void findResourcePath(String path, BaseDocument doc) {
         path = path.trim();
-        if (path.indexOf('?') > 0){
+        if (path.indexOf('?') > 0) {
             path = path.substring(0, path.indexOf('?'));
         }
         WebModule wm = WebModule.getWebModule(NbEditorUtilities.getFileObject(doc));
-        if(wm!=null){
-            FileObject docBase= wm.getDocumentBase();
+        if (wm != null) {
+            FileObject docBase = wm.getDocumentBase();
             FileObject fo = docBase.getFileObject(path);
-            if(fo!=null){
+            if (fo != null) {
                 openInEditor(fo);
-            }else {
-                    String key = "goto_resource_not_found"; // NOI18N
-                    String msg = NbBundle.getBundle(ZulHyperlinkProvider.class).getString(key);
-                    org.openide.awt.StatusDisplayer.getDefault().setStatusText(MessageFormat.format(msg, new Object [] { path } ));
+            } else {
+                String key = "goto_resource_not_found"; // NOI18N
+                String msg = NbBundle.getBundle(ZulHyperlinkProvider.class).getString(key);
+                org.openide.awt.StatusDisplayer.getDefault().setStatusText(MessageFormat.format(msg, new Object[]{path}));
             }
         }
     }
 
     private void openInEditor(FileObject fo) {
-        if (fo != null){
+        if (fo != null) {
             DataObject dobj = null;
-            try{
+            try {
                 dobj = DataObject.find(fo);
+            } catch (DataObjectNotFoundException e) {
+                ErrorManager.getDefault().notify(e);
+                return;
             }
-            catch (DataObjectNotFoundException e){
-               ErrorManager.getDefault().notify(e);
-               return; 
-            }
-            if (dobj != null){
+            if (dobj != null) {
                 Node.Cookie cookie = dobj.getCookie(OpenCookie.class);
-                if (cookie != null)
-                    ((OpenCookie)cookie).open();
+                if (cookie != null) {
+                    ((OpenCookie) cookie).open();
+                }
             }
         }
     }
-    
+
     private class OpenJavaClassThread implements Runnable {
+
         private String fqn;
         private BaseDocument doc;
-        
-        public OpenJavaClassThread(String name, BaseDocument doc){
+
+        public OpenJavaClassThread(String name, BaseDocument doc) {
             super();
             this.fqn = name;
             this.doc = doc;
         }
-        
+
         public void run() {
-          //  Utilities.getDocument(doc);
-          //  JMIUtils jmiUtils = JMIUtils.get(doc);
-         //   JavaClass item = null;
-         //   jmiUtils.beginTrans(false);
-            try {
-           //     item = jmiUtils.getExactClass(fqn);
-           //     if (item != null) {
-           //        jmiUtils.openElement(item);
-            //    } else {
-                    String key = "goto_source_not_found"; // NOI18N
-                    String msg = NbBundle.getBundle(ZulHyperlinkProvider.class).getString(key);
-                    org.openide.awt.StatusDisplayer.getDefault().setStatusText(MessageFormat.format(msg, new Object [] { fqn } ));
-            //    }
-            } finally {
-            //    jmiUtils.endTrans(false);
+            FileObject foClass = GlobalPathRegistry.getDefault().findResource(fqn.replaceAll("\\.", "/") + ".java");
+
+            if (foClass != null) {
+                openInEditor(foClass);
+            } else {
+                String key = "goto_resource_not_found"; // NOI18N
+                String msg = NbBundle.getBundle(ZulHyperlinkProvider.class).getString(key);
+                org.openide.awt.StatusDisplayer.getDefault().setStatusText(MessageFormat.format(msg, new Object[]{fqn}));
             }
+
         }
     }
 }

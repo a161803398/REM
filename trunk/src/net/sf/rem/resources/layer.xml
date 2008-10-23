@@ -32,6 +32,100 @@
             
             
             
+            <folder name="x-dsp+xml">
+                <folder name="Actions">
+                    <file name="org-openide-actions-CopyAction.instance">
+                        <attr name="position" intvalue="500"/>
+                    </file>
+                    <file name="org-openide-actions-CutAction.instance">
+                        <attr name="position" intvalue="400"/>
+                    </file>
+                    <file name="org-openide-actions-DeleteAction.instance">
+                        <attr name="position" intvalue="700"/>
+                    </file>
+                    <file name="org-openide-actions-FileSystemAction.instance">
+                        <attr name="position" intvalue="200"/>
+                    </file>
+                    <file name="org-openide-actions-OpenAction.instance">
+                        <attr name="position" intvalue="100"/>
+                    </file>
+                    <file name="org-openide-actions-PropertiesAction.instance">
+                        <attr name="position" intvalue="1300"/>
+                    </file>
+                    <file name="org-openide-actions-RenameAction.instance">
+                        <attr name="position" intvalue="800"/>
+                    </file>
+                    <file name="org-openide-actions-SaveAsTemplateAction.instance">
+                        <attr name="position" intvalue="1000"/>
+                    </file>
+                    <file name="org-openide-actions-ToolsAction.instance">
+                        <attr name="position" intvalue="1200"/>
+                    </file>
+                    <file name="sep-1.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="300"/>
+                    </file>
+                    <file name="sep-2.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="600"/>
+                    </file>
+                    <file name="sep-3.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="900"/>
+                    </file>
+                    <file name="sep-4.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="1100"/>
+                    </file>
+                </folder>
+            </folder>
+            <folder name="x-zhtml+xml">
+                <folder name="Actions">
+                    <file name="org-openide-actions-CopyAction.instance">
+                        <attr name="position" intvalue="500"/>
+                    </file>
+                    <file name="org-openide-actions-CutAction.instance">
+                        <attr name="position" intvalue="400"/>
+                    </file>
+                    <file name="org-openide-actions-DeleteAction.instance">
+                        <attr name="position" intvalue="700"/>
+                    </file>
+                    <file name="org-openide-actions-FileSystemAction.instance">
+                        <attr name="position" intvalue="200"/>
+                    </file>
+                    <file name="org-openide-actions-OpenAction.instance">
+                        <attr name="position" intvalue="100"/>
+                    </file>
+                    <file name="org-openide-actions-PropertiesAction.instance">
+                        <attr name="position" intvalue="1300"/>
+                    </file>
+                    <file name="org-openide-actions-RenameAction.instance">
+                        <attr name="position" intvalue="800"/>
+                    </file>
+                    <file name="org-openide-actions-SaveAsTemplateAction.instance">
+                        <attr name="position" intvalue="1000"/>
+                    </file>
+                    <file name="org-openide-actions-ToolsAction.instance">
+                        <attr name="position" intvalue="1200"/>
+                    </file>
+                    <file name="sep-1.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="300"/>
+                    </file>
+                    <file name="sep-2.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="600"/>
+                    </file>
+                    <file name="sep-3.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="900"/>
+                    </file>
+                    <file name="sep-4.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="1100"/>
+                    </file>
+                </folder>
+            </folder>
             <folder name="x-zs">
                 <file name="EditorKit.instance">
                     <attr name="instanceClass" stringvalue="org.netbeans.modules.editor.java.JavaKit"/>
@@ -245,11 +339,18 @@
   
     <folder name="Services">
         <folder name="MIMEResolver">
+            <file name="DSPResolver.xml" url="DSPResolver.xml">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.sf.rem.resources.Bundle"/>
+            </file>
+            <file name="ZHTMLResolver.xml" url="ZHTMLResolver.xml">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.sf.rem.loaders.Bundle"/>
+            </file>
             <file name="ZsResolver.xml" url="ZsResolver.xml">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="net.sf.rem.loaders.Bundle"/>
             </file>
             <file name="ZulResolver.xml" url="ZulResolver.xml">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="net.sf.rem.loaders.Bundle"/>
+                <attr name="position" intvalue="201"/>
             </file>
         </folder>
     </folder>
@@ -273,6 +374,16 @@
                 <attr name="templateWizardIterator" methodvalue="net.sf.rem.loaders.wizards.ZFileIterator.createZsIterator"/>
             </file>
         </folder>
+        <folder name="Other">
+            <file name="DSPTemplate.dsp" url="DSPTemplate.dsp">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.sf.rem.resources.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+            </file>
+            <file name="ZHTMLTemplate.zhtml" url="ZHTMLTemplate.zhtml">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.sf.rem.resources.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+            </file>
+        </folder>
     </folder>
     
     <folder name="Plugins">
@@ -294,7 +405,16 @@
     <!--
     <folder name="Editors">
         <folder name="text">
-            <folder name="xml">
+            <folder name="x-zul+xml">
+                <folder name="Popup"> 
+                    <file name="net-sf-rem-editor-ZulPopupAction.instance">
+                    </file>
+                    <attr name="net-sf-rem-editor-ZulPopupAction.instance/Separator0.instance" boolvalue="true"/>
+                    <file name="Separator0.instance">
+                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                    </file>
+                    <attr name="Separator0.instance/org-netbeans-modules-xml-text-syntax-XMLViewActions.instance" boolvalue="true"/>
+                </folder>
                 <folder name="HyperlinkProviders">
                     <file name="ZulHyperlinkProvider.instance">
                         <attr name="instanceClass" stringvalue="net.sf.rem.editor.ZulHyperlinkProvider"/>
@@ -302,8 +422,12 @@
                     </file>
                 </folder>
             </folder>
-            
-          
+ 
+            <folder name="x-zs">
+                <file name="EditorKit.instance">
+                    <attr name="instanceClass" stringvalue="org.netbeans.modules.editor.java.JavaKit"/>
+                </file>
+            </folder>
         </folder>
     </folder>
     -->
