@@ -34,9 +34,7 @@ import org.netbeans.modules.j2ee.dd.api.web.WebApp;
 import org.netbeans.modules.j2ee.dd.api.web.WelcomeFileList;
 import org.netbeans.modules.web.api.webmodule.ExtenderController;
 import org.netbeans.modules.web.api.webmodule.WebModule;
-//import org.netbeans.modules.web.spi.webmodule.FrameworkConfigurationPanel;
 import org.netbeans.modules.web.spi.webmodule.WebFrameworkProvider;
-//import org.netbeans.spi.java.project.classpath.ProjectClassPathExtender;
 import org.netbeans.modules.web.spi.webmodule.WebModuleExtender;
 import org.netbeans.spi.java.project.classpath.ProjectClassPathExtender;
 import org.openide.DialogDescriptor;
@@ -62,6 +60,7 @@ public class ZKWebFrameworkProvider extends WebFrameworkProvider {
     }
     
     // Add ZK library and change config files
+    @Override
     public Set extend(WebModule webModule) {
         FileObject fo = webModule.getDocumentBase();
         Project project = FileOwnerQuery.getOwner(fo);

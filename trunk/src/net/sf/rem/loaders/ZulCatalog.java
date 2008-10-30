@@ -98,7 +98,7 @@ public class ZulCatalog implements CatalogReader, CatalogDescriptor, org.xml.sax
     }
 
     public String getShortDescription() {
-        return "XML Catalog for ZUL 3.0.1";
+        return "XML Catalog for ZUL 3.5.1";
     }
 
     public void addPropertyChangeListener(PropertyChangeListener propertyChangeListener) {
