@@ -25,8 +25,6 @@ import org.netbeans.modules.xml.api.model.DTDUtil;
 import org.netbeans.modules.xml.api.model.GrammarEnvironment;
 import org.netbeans.modules.xml.api.model.GrammarQuery;
 import org.openide.util.Enumerations;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
